@@ -29,6 +29,9 @@
 .clave-fila code{font-family:var(--mono);font-size:.76rem;color:var(--ink-2)}
 /* La presentación queda fija a la altura de la pantalla: no se mueve cuando el formulario crece
    (por ejemplo, al pasar de «Ingresar» a «Inscribirme»). */
+/* Reserva siempre el espacio de la barra de desplazamiento: si no, al aparecer
+   (formulario de inscripción) el ancho cambia y las etiquetas se reacomodan. */
+html:has(.acceso){scrollbar-gutter:stable}
 @media (min-width:881px){.acceso-info{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto}}
 @media (max-width:880px){.acceso{grid-template-columns:1fr}.acceso-info{padding:2rem 1.4rem}}
 
