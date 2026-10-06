@@ -27,6 +27,9 @@
 .claves{border-top:1px dashed var(--line-fuerte);padding-top:.85rem;display:flex;flex-direction:column;gap:.35rem}
 .clave-fila{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.8rem}
 .clave-fila code{font-family:var(--mono);font-size:.76rem;color:var(--ink-2)}
+/* La presentación queda fija a la altura de la pantalla: no se mueve cuando el formulario crece
+   (por ejemplo, al pasar de «Ingresar» a «Inscribirme»). */
+@media (min-width:881px){.acceso-info{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto}}
 @media (max-width:880px){.acceso{grid-template-columns:1fr}.acceso-info{padding:2rem 1.4rem}}
 
 /* ---------- banner y buscador ---------- */
