@@ -2,7 +2,7 @@
    Las vistas y el núcleo leen de una caché síncrona que se llena en iniciar();
    las escrituras van al servidor, que aplica las reglas de seguridad (RLS). */
 
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../config.js';
+import { BASE, SUPABASE_URL, SUPABASE_ANON_KEY } from '../config.js';
 
 let cliente = null;
 let cache = null;
@@ -78,7 +78,7 @@ export async function registrar({ correo, clave, nombre, entidad, aceptoDatos })
     email: correo, password: clave,
     options: {
       data: { nombre, entidad, acepto_datos: aceptoDatos ? 'true' : 'false' },
-      emailRedirectTo: new URL('index.html', location.href.replace(/paginas\/.*$/, '')).href
+      emailRedirectTo: BASE
     }
   });
   if (error) return { ok: false, error };

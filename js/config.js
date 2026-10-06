@@ -20,7 +20,7 @@ export const SUPABASE_URL = 'https://csfcugfczltvwqmgwnro.supabase.co';
 export const SUPABASE_ANON_KEY = 'sb_publishable_4FinXjAEBnmwCFsB3eZ_zQ_73LrYvfR';
 
 export const PAGINAS = {
-  acceso:     BASE + 'index.html',
+  acceso:     BASE,
   inicio:     BASE + 'paginas/inicio.html',
   modulo:     BASE + 'paginas/modulo.html',
   evaluacion: BASE + 'paginas/evaluacion.html',
