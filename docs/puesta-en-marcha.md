@@ -98,6 +98,10 @@ Nadie puede darse el rol de coordinación desde el navegador.
 
 ## Mantenimiento
 
+- **Crear cuentas siempre desde la plataforma** (pestaña *Inscribirme*), no desde el panel
+  de Supabase. Si una cuenta quedó sin perfil y no puede ingresar, volver a ejecutar
+  `supabase/esquema.sql`: es seguro y repara esas cuentas sin borrar nada.
+
 - **Copias de seguridad:** el plan gratuito no incluye respaldos descargables. Exportar
   periódicamente desde **Database → Backups** (plan Pro) o con `pg_dump` usando la cadena
   de conexión del proyecto.

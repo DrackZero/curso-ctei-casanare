@@ -55,6 +55,15 @@ create trigger al_crear_usuario
   after insert on auth.users
   for each row execute function public.crear_perfil();
 
+-- Reparación: crea el perfil de cuentas que existan sin él (por ejemplo, creadas desde el
+-- panel de Supabase antes de instalar este esquema). Sin perfil, la cuenta no puede ingresar.
+insert into public.perfiles (id, nombre, correo)
+select u.id, left(coalesce(nullif(trim(u.raw_user_meta_data->>'nombre'), ''), split_part(u.email, '@', 1)), 120), lower(u.email)
+  from auth.users u
+ where u.email is not null
+   and not exists (select 1 from public.perfiles p where p.id = u.id)
+on conflict (id) do nothing;
+
 drop policy if exists perfiles_leer on public.perfiles;
 create policy perfiles_leer on public.perfiles
   for select to authenticated
