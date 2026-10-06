@@ -16,8 +16,8 @@ export const UMBRAL_DEFECTO = 70;
 /* Conexión con Supabase (Settings → API del proyecto).
    La clave «anon / publishable» es pública por diseño: lo que protege los datos son
    las políticas RLS de supabase/esquema.sql. NUNCA poner aquí la clave service_role. */
-export const SUPABASE_URL = '';
-export const SUPABASE_ANON_KEY = '';
+export const SUPABASE_URL = 'https://csfcugfczltvwqmgwnro.supabase.co/rest/v1/';
+export const SUPABASE_ANON_KEY = 'sb_publishable_4FinXjAEBnmwCFsB3eZ_zQ_73LrYvfR';
 
 export const PAGINAS = {
   acceso:     BASE + 'index.html',
