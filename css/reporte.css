@@ -1,0 +1,81 @@
+/* =========================================================
+   reporte — informe de resultados imprimible (carta, vertical)
+   Plataforma CTeI Casanare
+   ========================================================= */
+
+.cuerpo-informe{background:var(--surface-2)}
+
+/* ---------- pantalla ---------- */
+.barra-informe{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:2px solid var(--gob)}
+.barra-informe-in{max-width:8.5in;margin:0 auto;padding:.6rem 1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.barra-informe-in .pista{flex:1;min-width:220px}
+
+.hoja-informe{max-width:8.5in;margin:1.25rem auto 3rem;background:var(--surface);box-shadow:var(--sombra);
+  padding:.6in .65in;display:flex;flex-direction:column;gap:1.4rem;border:1px solid var(--line)}
+
+/* ---------- encabezado y portada ---------- */
+.inf-cab{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-bottom:3px solid var(--gob);padding-bottom:.7rem}
+.inf-marca{display:flex;align-items:center;gap:.7rem}
+.inf-marca img{height:44px;width:auto}
+.inf-marca .l1{font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--gob-osc)}
+.inf-marca .l2{font-size:.72rem;color:var(--muted);max-width:44ch;line-height:1.3}
+.inf-corte{display:flex;flex-direction:column;align-items:flex-end;font-size:.72rem;color:var(--muted);line-height:1.35}
+.inf-corte b{font-family:var(--display);font-size:.9rem;color:var(--ink)}
+
+.inf-portada{display:flex;flex-direction:column;gap:.7rem}
+.inf-portada h1{font-family:var(--display);font-size:1.55rem;font-weight:800;color:var(--gob-osc);line-height:1.2;letter-spacing:-.01em;max-width:34ch}
+.inf-ficha{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.1rem 1.2rem;margin:0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.6rem 0}
+.inf-ficha div{display:flex;gap:.5rem;font-size:.82rem;padding:.15rem 0}
+.inf-ficha dt{color:var(--muted);min-width:11.5em}
+.inf-ficha dd{margin:0;color:var(--ink);font-weight:500}
+.inf-aviso{font-size:.82rem;background:var(--warn-suave);border-left:3px solid var(--warn);padding:.5rem .75rem;color:var(--ink-2)}
+
+/* ---------- secciones ---------- */
+.inf-sec{display:flex;flex-direction:column;gap:.85rem}
+.inf-sec h2{font-family:var(--display);font-size:1.12rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:.6rem;
+  border-bottom:1px solid var(--line);padding-bottom:.35rem}
+.inf-sec h2 span{width:1.6rem;height:1.6rem;border-radius:5px;background:var(--gob);color:#fff;display:grid;place-items:center;font-size:.85rem}
+.inf-sec .cifras{grid-template-columns:repeat(6,minmax(0,1fr))}
+.inf-sec .cifras > *{padding:.6rem .7rem}
+.inf-sec .cifra .v{font-size:1.2rem}
+.inf-sec .cifra .k{font-size:.62rem;line-height:1.3}
+.inf-sec .cifra .v{font-size:1.35rem}
+.inf-metodo{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem;font-size:.84rem;color:var(--ink-2)}
+.inf-pie{border-top:1px solid var(--line);padding-top:.6rem;font-size:.72rem;color:var(--muted);text-align:center}
+
+/* las tarjetas de gráficas dentro del informe: sin sombra, ancho completo */
+.hoja-informe .g-tarjeta{border:1px solid var(--line);padding:.85rem .95rem;break-inside:avoid}
+.hoja-informe .g-tabla summary{display:none}
+/* en el informe la primera columna (módulo o pregunta) lleva el ancho; las cifras se compactan */
+.hoja-informe .g-tabla table{width:100%;table-layout:auto}
+.hoja-informe .g-tabla td:first-child,.hoja-informe .g-tabla th:first-child{width:38%;min-width:16em}
+.hoja-informe .g-tabla td,.hoja-informe .g-tabla th{padding:.3rem .45rem;font-size:.74rem;line-height:1.3}
+.hoja-informe .g-tabla th{white-space:normal}
+.hoja-informe .panel{break-inside:auto}
+.hoja-informe .tabla-participantes{font-size:.76rem}
+.hoja-informe .tabla-participantes td,.hoja-informe .tabla-participantes th{padding:.35rem .5rem}
+
+/* ---------- impresión ---------- */
+@page{
+  size:letter;
+  margin:14mm 13mm 16mm;
+  @bottom-left{content:"Curso Innovación pública y proyectos CTeI · Informe de resultados";font-family:"Work Sans",sans-serif;font-size:8pt;color:#6A7F73}
+  @bottom-right{content:"Página " counter(page) " de " counter(pages);font-family:"Work Sans",sans-serif;font-size:8pt;color:#6A7F73}
+}
+@media print{
+  html,body{background:#fff !important}
+  .no-imprimir{display:none !important}
+  .hoja-informe{max-width:none;margin:0;padding:0;box-shadow:none;border:none;gap:1rem}
+  .salto-antes{break-before:page}
+  .inf-sec h2{break-after:avoid}
+  .g-tarjeta,.cifras,tr,.hallazgos li{break-inside:avoid}
+  .hallazgos{break-inside:auto}
+  .hoja-informe .tabla-participantes td,.hoja-informe .tabla-participantes th{padding:.26rem .45rem}
+  .inf-pie{break-before:avoid;padding-top:.4rem}
+  .gb-barra,.gc-barra,.gb-punto,.inf-sec h2 span,.g-leyenda i,.inf-cab,.pastilla,.inf-aviso,.cifras{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tabla-env{overflow:visible}
+  table{min-width:0 !important}
+  a[href]::after{content:none}
+}

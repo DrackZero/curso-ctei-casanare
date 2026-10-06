@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resultado · Innovación pública y proyectos CTeI · Gobernación de Casanare</title>
+  <meta name="description" content="Curso virtual de autoformación tipo MOOC en innovación pública y formulación de proyectos CTeI — Gobernación de Casanare.">
+  <link rel="icon" href="../assets/favicon.ico">
+
+  <!-- Tipografías institucionales -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+  <!-- Hojas de estilo: base → layout → componentes → vistas -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/componentes.css">
+  <link rel="stylesheet" href="../css/vistas.css">
+
+  <!-- Iconos -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+
+  <!-- Encabezado institucional: franja GOV.CO, enlaces de utilidad y menú.
+       Lo arma js/ui/cabecera.js -->
+  <div id="cabecera"></div>
+
+  <!-- Contenido: nota obtenida y revisión pregunta por pregunta.
+       Lo arma js/vistas/resultado.js -->
+  <main class="pagina" id="contenido"></main>
+
+  <!-- Pie institucional: banda de valores CTeI y datos de contacto.
+       Lo arma js/ui/pie.js -->
+  <div id="pie"></div>
+
+  <!-- Barra lateral fija de enlaces institucionales -->
+  <nav id="lateral"></nav>
+
+  <!-- Elementos de apoyo: visor de imagen ampliada y avisos emergentes -->
+  <div id="lupa"></div>
+  <div id="aviso" hidden class="aviso"></div>
+
+  <script src="../js/vendor/supabase.js"></script>
+
+  <script type="module" src="../js/vistas/resultado.js"></script>
+
+</body>
+
+</html>

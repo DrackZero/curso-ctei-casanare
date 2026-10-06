@@ -1,0 +1,61 @@
+{
+  "moduloId": "m2",
+  "numero": 2,
+  "titulo": "Problemas públicos, retos territoriales y diagnóstico basado en evidencia",
+  "notaMinima": 70,
+  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntas": [
+    {
+      "id": "m2-p1",
+      "enunciado": "Un problema central bien formulado se redacta como:",
+      "opciones": [
+        "La ausencia de una solución específica",
+        "Una situación negativa existente",
+        "La falta de presupuesto",
+        "Un objetivo por alcanzar"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p2",
+      "enunciado": "En el árbol de problemas, las raíces representan:",
+      "opciones": [
+        "Los efectos",
+        "Las causas",
+        "La población objetivo",
+        "Los indicadores"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p3",
+      "enunciado": "El árbol de objetivos se obtiene:",
+      "opciones": [
+        "Convirtiendo el problema y sus causas en situaciones positivas alcanzables",
+        "Enumerando las actividades del proyecto",
+        "Copiando los objetivos del plan de desarrollo",
+        "Definiendo el presupuesto"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p4",
+      "enunciado": "La evidencia dentro del diagnóstico sirve para:",
+      "opciones": [
+        "Alargar el documento",
+        "Demostrar que el problema existe, a quién afecta y con qué magnitud",
+        "Justificar el presupuesto ya asignado",
+        "Reemplazar el árbol de problemas"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    }
+  ]
+}

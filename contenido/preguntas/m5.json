@@ -1,0 +1,61 @@
+{
+  "moduloId": "m5",
+  "numero": 5,
+  "titulo": "Convocatorias, fuentes de financiación y preparación de proyectos",
+  "notaMinima": 70,
+  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntas": [
+    {
+      "id": "m5-p1",
+      "enunciado": "Un requisito habilitante en una convocatoria es:",
+      "opciones": [
+        "Un criterio que otorga puntaje adicional",
+        "Una condición mínima sin la cual la propuesta no pasa a evaluación",
+        "Una recomendación opcional",
+        "El presupuesto máximo"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p2",
+      "enunciado": "La diferencia entre elegibilidad y pertinencia es que:",
+      "opciones": [
+        "Son lo mismo",
+        "La elegibilidad es cumplir las condiciones formales; la pertinencia es que la propuesta responda al objeto de la convocatoria",
+        "La pertinencia la define el proponente",
+        "La elegibilidad depende del puntaje"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p3",
+      "enunciado": "Los Términos de Referencia se leen primero para:",
+      "opciones": [
+        "Conocer el monto",
+        "Identificar objeto, requisitos, criterios de evaluación, cronograma y documentos exigidos",
+        "Redactar el resumen",
+        "Buscar el formato de presupuesto"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p4",
+      "enunciado": "Una contrapartida es:",
+      "opciones": [
+        "Un descuento sobre el valor del proyecto",
+        "El aporte propio o de aliados que complementa los recursos solicitados",
+        "Una sanción",
+        "El excedente presupuestal"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    }
+  ]
+}

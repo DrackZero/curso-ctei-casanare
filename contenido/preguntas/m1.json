@@ -1,0 +1,61 @@
+{
+  "moduloId": "m1",
+  "numero": 1,
+  "titulo": "Gestión del conocimiento, innovación pública y valor público",
+  "notaMinima": 70,
+  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntas": [
+    {
+      "id": "m1-p1",
+      "enunciado": "¿Qué diferencia el conocimiento tácito del explícito?",
+      "opciones": [
+        "El tácito está documentado y el explícito no",
+        "El tácito reside en la experiencia de las personas y el explícito está documentado y es transferible",
+        "Son sinónimos",
+        "El explícito solo existe en medios digitales"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p2",
+      "enunciado": "La innovación pública se entiende como:",
+      "opciones": [
+        "La compra de tecnología para la entidad",
+        "Un proceso de mejora, adaptación o creación de soluciones que generan valor público",
+        "Un trámite administrativo",
+        "Una estrategia de comunicaciones"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p3",
+      "enunciado": "El valor público se refiere a:",
+      "opciones": [
+        "El presupuesto ejecutado por la entidad",
+        "El beneficio real y percibido que obtienen las personas como resultado de la gestión pública",
+        "El número de contratos firmados",
+        "El valor comercial de un servicio"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p4",
+      "enunciado": "Una oportunidad de innovación territorial surge cuando:",
+      "opciones": [
+        "Existe una situación susceptible de mejora con conocimiento y actores disponibles",
+        "Hay recursos sin ejecutar",
+        "Se aprueba una nueva norma",
+        "Se contrata un consultor"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- El título es el nombre sugerido del archivo al guardar como PDF -->
+  <title>informe-resultados-curso-ctei</title>
+  <link rel="icon" href="../assets/favicon.ico">
+
+  <!-- Tipografías institucionales -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+  <!-- Hojas de estilo: base → componentes → gráficas → informe imprimible -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/componentes.css">
+  <link rel="stylesheet" href="../css/graficas.css">
+  <link rel="stylesheet" href="../css/reporte.css">
+</head>
+
+<body class="cuerpo-informe">
+
+  <!-- Barra de acciones: no sale en el PDF -->
+  <div class="barra-informe no-imprimir">
+    <div class="barra-informe-in">
+      <a class="btn btn-linea btn-sm" id="volver" href="admin.html">← Volver al seguimiento</a>
+      <span class="pista">En el cuadro que se abre, elija <strong>Guardar como PDF</strong> como destino.</span>
+      <button class="btn" type="button" id="btn-pdf">Descargar PDF</button>
+    </div>
+  </div>
+
+  <!-- El informe. Lo arma js/vistas/reporte.js con las mismas cifras del panel -->
+  <main class="hoja-informe" id="informe">
+    <p class="pista">Preparando el informe…</p>
+  </main>
+
+  <script src="../js/vendor/supabase.js"></script>
+
+  <script type="module" src="../js/vistas/reporte.js"></script>
+
+</body>
+
+</html>

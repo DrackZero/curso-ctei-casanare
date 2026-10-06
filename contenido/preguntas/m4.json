@@ -1,0 +1,61 @@
+{
+  "moduloId": "m4",
+  "numero": 4,
+  "titulo": "Sistema CTeI y formulación de proyectos de Ciencia, Tecnología e Innovación",
+  "notaMinima": 70,
+  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntas": [
+    {
+      "id": "m4-p1",
+      "enunciado": "El modelo de quíntuple hélice articula:",
+      "opciones": [
+        "Cinco dependencias de la Gobernación",
+        "Gobierno, academia, sector productivo, sociedad civil y medio ambiente",
+        "Cinco fuentes de financiación",
+        "Cinco etapas del proyecto"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m4-p2",
+      "enunciado": "Lo que hace que un proyecto sea CTeI es:",
+      "opciones": [
+        "Su monto",
+        "Que incluya un componente de conocimiento: busca, aplica, transfiere o apropia conocimiento para resolver una necesidad",
+        "Que use computadores",
+        "Que lo formule una universidad"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m4-p3",
+      "enunciado": "La apropiación social del conocimiento se refiere a:",
+      "opciones": [
+        "Registrar una patente",
+        "Procesos donde la ciudadanía comprende, usa y se involucra con el conocimiento",
+        "Comprar tecnología",
+        "Publicar un artículo científico"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m4-p4",
+      "enunciado": "El mapa de actores sirve para:",
+      "opciones": [
+        "Cumplir un requisito formal",
+        "Identificar quiénes aportan capacidades, conocimiento y respaldo al proyecto y con qué rol",
+        "Listar los beneficiarios",
+        "Definir el presupuesto"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    }
+  ]
+}

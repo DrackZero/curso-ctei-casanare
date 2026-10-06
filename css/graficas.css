@@ -1,0 +1,107 @@
+/* =========================================================
+   graficas — panel de seguimiento e informe PDF
+   Plataforma CTeI Casanare
+   Colores validados (serie única, rampa ordinal del embudo)
+   con el validador de paleta: contraste ≥ 3:1 sobre blanco.
+   ========================================================= */
+:root{
+  --graf-serie:#1F7A4C;          /* serie única: verde institucional aclarado */
+  --graf-atenuado:#9AA79F;       /* lo que no es el foco (lleva etiqueta y tabla) */
+  --graf-grid:#E3E9E5;
+  --graf-ref:#3D5147;
+  --estado-revisar:#EC835A;      /* estado «revisar»: siempre con icono y texto */
+  --embudo-1:#7FB597; --embudo-2:#4E9A70; --embudo-3:#1F7A4C; --embudo-4:#135E39; --embudo-5:#0A3F25;
+  --etq:clamp(130px,34%,290px);
+  --hueco:.8rem;
+  --reserva:96px;
+}
+
+/* ---------- rejilla del panel ---------- */
+.g-rejilla-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:1rem;align-items:start}
+.g-tarjeta{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.05rem 1.15rem 1rem;
+  display:flex;flex-direction:column;gap:.9rem;min-width:0}
+.g-tarjeta.g-ancha{grid-column:1/-1}
+.g-tarjeta header{display:flex;flex-direction:column;gap:.2rem}
+.g-tarjeta h3{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--ink)}
+.g-tarjeta header p{font-size:.84rem;color:var(--muted);max-width:72ch}
+
+/* ---------- barras horizontales ---------- */
+.gb{position:relative;display:flex;flex-direction:column;gap:6px;padding-top:24px}
+.gb-rejilla{position:absolute;top:0;bottom:24px;left:calc(var(--etq) + var(--hueco));right:var(--reserva);pointer-events:none}
+.gb-rejilla span{position:absolute;top:18px;bottom:0;width:1px;background:var(--graf-grid)}
+.gb-ref{position:absolute;top:14px;bottom:-2px;width:0;border-left:1.5px solid var(--graf-ref);font-style:normal;z-index:2}
+/* la etiqueta de valor queda por encima de la línea de referencia */
+.gb-ref b{position:absolute;top:-16px;left:0;transform:translateX(-50%);white-space:nowrap;
+  font-size:.7rem;font-weight:600;color:var(--graf-ref);background:var(--surface);padding:0 .3rem;font-family:var(--mono)}
+.gb-grupo{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  padding:.55rem 0 .1rem;border-top:1px solid var(--line);margin-top:.2rem;position:relative;z-index:1}
+.gb-grupo:first-of-type{border-top:none;margin-top:0;padding-top:0}
+.gb-fila{display:grid;grid-template-columns:var(--etq) 1fr;gap:var(--hueco);align-items:center;min-height:28px;position:relative}
+.gb-etq{display:flex;align-items:center;gap:.5rem;min-width:0}
+.gb-punto{width:8px;height:8px;border-radius:2px;flex:none}
+.gb-txt{display:flex;flex-direction:column;min-width:0;line-height:1.2}
+.gb-nom{font-size:.83rem;color:var(--ink);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.gb-sub{font-size:.72rem;color:var(--muted)}
+.gb-pista{position:relative;height:18px;margin-right:var(--reserva)}
+.gb-barra{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;min-width:2px;cursor:default;outline-offset:2px}
+.gb-barra:hover,.gb-barra:focus-visible{filter:brightness(.9)}
+.gb-val{position:absolute;top:50%;transform:translateY(-50%);margin-left:4px;padding:0 3px;white-space:nowrap;z-index:3;background:var(--surface,#fff);border-radius:3px;
+  font-family:var(--mono);font-size:.76rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.gb-alerta{font-family:var(--sans);font-size:.72rem;font-weight:600;color:var(--ink);margin-left:.35rem}
+.gb-alerta i{font-style:normal;color:var(--estado-revisar);margin-right:.2rem;font-size:.66rem}
+.gb-eje{display:grid;grid-template-columns:var(--etq) 1fr;gap:var(--hueco);height:18px}
+.gb-eje-marcas{position:relative;margin-right:var(--reserva)}
+.gb-eje-marcas span{position:absolute;transform:translateX(-50%);font-family:var(--mono);font-size:.68rem;color:var(--muted);
+  font-variant-numeric:tabular-nums}
+
+/* ---------- columnas ---------- */
+.gc{display:flex;flex-direction:column;gap:.35rem}
+.gc-lienzo{position:relative;height:190px;margin:40px 0 0 34px}
+.gc-rejilla span{position:absolute;left:0;right:0;height:1px;background:var(--graf-grid)}
+.gc-rejilla i{position:absolute;left:-34px;width:28px;text-align:right;transform:translateY(-50%);font-style:normal;
+  font-family:var(--mono);font-size:.68rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.gc-cols{position:absolute;inset:0;display:flex;align-items:stretch}
+.gc-col{flex:1;position:relative;display:flex;justify-content:center;align-items:flex-end}
+.gc-barra{width:24px;border-radius:4px 4px 0 0;min-height:2px;cursor:default;outline-offset:2px}
+.gc-barra:hover,.gc-barra:focus-visible{filter:brightness(.9)}
+.gc-val{position:absolute;left:50%;transform:translate(-50%,-5px);font-family:var(--mono);font-size:.76rem;color:var(--ink-2);
+  margin-bottom:0;white-space:nowrap}
+.gc-corte{width:0;border-left:1.5px solid var(--graf-ref);position:relative;margin-top:-40px}
+.gc-corte b{position:absolute;top:0;left:0;transform:translateX(-50%);white-space:nowrap;font-size:.7rem;font-weight:600;
+  color:var(--graf-ref);background:var(--surface);padding:0 .3rem;font-family:var(--mono)}
+.gc-ejex{display:flex;margin-left:34px;border-top:1px solid var(--line-fuerte);padding-top:.35rem}
+.gc-x{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.2}
+.gc-x b{font-family:var(--mono);font-size:.8rem;color:var(--ink);font-weight:600}
+.gc-x span{font-size:.7rem;color:var(--muted)}
+.gc-corte-hueco{width:0}
+
+/* ---------- leyenda, tabla y globo ---------- */
+.g-leyenda{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-size:.78rem;color:var(--ink-2)}
+.g-leyenda span{display:inline-flex;align-items:center;gap:.4rem}
+.g-leyenda i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.g-tabla summary{cursor:pointer;font-size:.8rem;color:var(--gob);font-weight:600;width:max-content}
+.g-tabla[open] summary{margin-bottom:.5rem}
+.g-tabla table{min-width:0;font-size:.8rem}
+.g-tabla th,.g-tabla td{padding:.4rem .6rem}
+.g-tabla td.n,.g-tabla th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.g-globo{position:fixed;z-index:95;background:var(--ink);color:#fff;font-size:.78rem;line-height:1.35;
+  padding:.4rem .6rem;border-radius:6px;max-width:320px;pointer-events:none;box-shadow:var(--sombra)}
+
+/* ---------- panel: barra de acciones ---------- */
+.acciones-panel{display:flex;flex-wrap:wrap;gap:.6rem}
+.aviso-datos{display:flex;gap:.6rem;align-items:flex-start;background:var(--warn-suave);border:1px solid #EBD3A3;border-radius:var(--r);
+  padding:.7rem .9rem;font-size:.85rem;color:var(--ink-2)}
+.aviso-datos strong{color:var(--ink)}
+
+@media (max-width:640px){
+  :root{--etq:clamp(96px,38%,160px);--reserva:74px}
+}
+
+/* ---------- hallazgos y notas en tabla ---------- */
+.hallazgos{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gob);border-radius:var(--r);
+  padding:.95rem 1.2rem}
+.hallazgos h3{font-family:var(--display);font-size:.95rem;font-weight:700;margin-bottom:.45rem}
+.hallazgos ul{margin:0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.3rem;font-size:.9rem;color:var(--ink-2);max-width:95ch}
+.tabla-participantes td.n,.tabla-participantes th.n{text-align:right}
+.nota-ok{font-family:var(--mono);color:var(--ink)}
+.nota-baja{font-family:var(--mono);color:var(--crit);font-weight:600}

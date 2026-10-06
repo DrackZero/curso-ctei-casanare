@@ -1,0 +1,60 @@
+{
+  "nombre": "Innovación pública y formulación de proyectos CTeI para el fortalecimiento de capacidades territoriales en Casanare",
+  "nombreCorto": "Innovación pública y proyectos CTeI",
+  "entidad": "Gobernación de Casanare",
+  "dependencia": "Departamento Administrativo de Planeación · Ciencia, Tecnología e Innovación",
+  "modalidad": "Virtual asincrónica de autoformación tipo MOOC",
+  "duracion": "48 horas",
+  "enfoque": "Aprendizaje autónomo, microaprendizaje, aplicación práctica, evaluación formativa y enfoque territorial",
+  "productoFinal": "Ficha Básica Final de Proyecto de Innovación Pública o CTeI",
+  "notaMinima": 70,
+  "inscripcion": "gratuita",
+  "rutaFormativa": [
+    "Oportunidad",
+    "Problema y evidencia",
+    "Perfil MGA",
+    "CTeI y actores",
+    "Financiación",
+    "Seguimiento y sostenibilidad",
+    "Ficha final"
+  ],
+  "secciones": [
+    {
+      "k": "proposito",
+      "t": "Propósito formativo",
+      "d": "Para qué sirve el módulo"
+    },
+    {
+      "k": "competencia",
+      "t": "Competencia específica",
+      "d": "Qué capacidad desarrolla"
+    },
+    {
+      "k": "resultados",
+      "t": "Resultados de aprendizaje",
+      "d": "Qué podrá hacer al terminar"
+    },
+    {
+      "k": "contenidos",
+      "t": "Unidades y contenidos",
+      "d": "Temas que se abordan"
+    },
+    {
+      "k": "recursos",
+      "t": "Materiales de apoyo",
+      "d": "Guías, plantillas y audiovisuales"
+    },
+    {
+      "k": "actividad",
+      "t": "Actividad práctica",
+      "d": "Ejercicio guiado del módulo"
+    },
+    {
+      "k": "producto",
+      "t": "Producto del módulo",
+      "d": "Lo que debe entregar"
+    }
+  ],
+  "version": "1.0",
+  "actualizado": "2026-09-14"
+}

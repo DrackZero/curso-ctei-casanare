@@ -1,0 +1,147 @@
+/* =========================================================
+   layout — encabezado GOV.CO, barra lateral, pie y rejilla de página
+   Plataforma CTeI Casanare
+   ========================================================= */
+/* ---------- encabezado institucional (estándar GOV.CO) ---------- */
+.govco{background:var(--govco);color:#fff}
+.govco-in{max-width:1180px;margin:0 auto;padding:.3rem 1.15rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.govco .marca-pais{display:flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:700;letter-spacing:.01em;font-size:1.02rem}
+.govco .marca-pais .sello{width:22px;height:22px;border-radius:3px;background:rgba(255,255,255,.9);color:var(--govco);
+  display:grid;place-items:center;font-size:.55rem;font-weight:700;letter-spacing:0;line-height:1;font-family:var(--sans)}
+.govco .sep{width:1px;height:18px;background:rgba(255,255,255,.45)}
+.govco .acc{margin-left:auto;display:flex;align-items:center;gap:.55rem;font-size:.76rem}
+.govco .acc button{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:4px;
+  padding:.05rem .38rem;font-size:.74rem;cursor:pointer;line-height:1.4}
+.govco .acc button:hover{background:rgba(255,255,255,.18)}
+
+.utilidad{background:var(--gob);color:#fff}
+.utilidad-in{max-width:1180px;margin:0 auto;padding:.28rem 1.15rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:.35rem .85rem;font-size:.76rem}
+.utilidad a,.utilidad button{color:#fff;background:transparent;border:none;padding:0;cursor:pointer;font-size:.76rem;text-decoration:none}
+.utilidad a:hover,.utilidad button:hover{text-decoration:underline}
+.utilidad .div{opacity:.5}
+
+.marca-menu{display:flex;align-items:center;gap:.6rem;padding-right:.9rem;margin-right:.3rem;border-right:1px solid var(--line);min-width:0}
+.marca-menu img{height:34px;width:auto;display:block;flex:none}
+.marca-menu .l1{font-family:var(--display);font-weight:700;font-size:.8rem;line-height:1.15;color:var(--gob-osc);white-space:nowrap}
+.marca-menu .l2{font-size:.68rem;line-height:1.15;color:var(--muted);white-space:nowrap}
+@media (max-width:760px){.marca-menu{border-right:none;padding-right:0}.marca-menu .l2{display:none}}
+.marca-central .fila{display:flex;align-items:center;gap:.75rem}
+.marca-central .l1{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--gob-osc);letter-spacing:-.01em;line-height:1.15}
+.marca-central .l2{font-size:.78rem;color:var(--muted);line-height:1.2}
+.tricolor{display:flex;flex-direction:column;width:5px;height:22px;border-radius:1px;overflow:hidden;margin-right:.15rem}
+.tricolor i{flex:1}
+.tricolor i:nth-child(1){background:var(--tri-amarillo);flex:2}
+.tricolor i:nth-child(2){background:var(--tri-azul)}
+.tricolor i:nth-child(3){background:var(--tri-rojo)}
+
+.cab-fija{position:sticky;top:0;z-index:40;background:var(--surface);box-shadow:0 2px 10px -6px rgba(21,36,29,.35)}
+.barra-menu{border-top:1px solid var(--line);border-bottom:2px solid var(--gob);background:var(--surface)}
+.barra-menu-in{max-width:1180px;margin:0 auto;padding:0 1.15rem;display:flex;align-items:center;gap:.5rem;min-height:46px}
+.menu{display:flex;align-items:center;gap:.15rem;flex-wrap:wrap}
+.menu > button,
+.menu > .envuelve > button{background:transparent;border:none;border-bottom:3px solid transparent;color:var(--ink-2);
+  padding:.7rem .95rem .55rem;cursor:pointer;font-weight:600;font-size:.88rem;display:inline-flex;align-items:center;gap:.4rem;
+  text-transform:uppercase;letter-spacing:.03em}
+.menu > button:hover,
+.menu > .envuelve > button:hover{color:var(--gob);background:var(--surface-2)}
+.menu > button[aria-current="page"],
+.menu > .envuelve > button[aria-current="page"],
+.menu > .envuelve > button[aria-expanded="true"]{color:var(--gob);border-bottom-color:var(--gob)}
+.caret{font-size:.6rem;opacity:.8;transition:transform .15s}
+.menu > .envuelve > button[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.envuelve{position:relative;display:inline-flex}
+.desplegable{position:absolute;top:calc(100% + .2rem);left:0;width:min(440px,90vw);background:var(--surface);color:var(--ink);
+  border:1px solid var(--line);border-top:3px solid var(--gob);border-radius:0 0 10px 10px;box-shadow:var(--sombra);
+  padding:.4rem;z-index:40;max-height:70vh;overflow-y:auto}
+.desplegable .cab{padding:.45rem .6rem .3rem;display:flex;align-items:center;justify-content:space-between}
+.item-mod{display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:.6rem;width:100%;text-align:left;
+  background:transparent;border:none;padding:.5rem .6rem;border-radius:8px;cursor:pointer}
+.item-mod:hover{background:var(--surface-2)}
+.item-mod[aria-current="page"]{background:var(--gob-suave)}
+.item-mod .n{width:26px;height:26px;border-radius:4px;display:grid;place-items:center;color:#fff;font-family:var(--mono);font-size:.76rem;font-weight:600}
+.item-mod .t{font-size:.87rem;font-weight:600;line-height:1.25}
+.item-mod .d{font-size:.75rem;color:var(--muted)}
+.usuario{margin-left:auto;display:flex;align-items:center;gap:.5rem}
+.usuario > button{background:var(--surface);border:1px solid var(--line-fuerte);color:var(--ink-2);border-radius:999px;
+  padding:.26rem .6rem .26rem .3rem;display:flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.83rem;font-weight:600}
+.usuario > button:hover{background:var(--surface-2)}
+.ini{width:26px;height:26px;border-radius:50%;background:var(--gob);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.74rem;flex:none}
+.menu-usr{right:0;left:auto;width:min(255px,86vw);border-radius:0 0 10px 10px}
+.menu-usr button{width:100%;text-align:left;background:transparent;border:none;padding:.5rem .6rem;border-radius:8px;cursor:pointer;font-size:.88rem}
+.menu-usr button:hover{background:var(--surface-2)}
+@media (max-width:760px){
+  .marca-central{padding-top:.85rem}
+  .barra-menu-in{flex-wrap:wrap;gap:.25rem;padding-bottom:.35rem}
+  .menu{width:100%;order:2}
+  .menu > button,
+  .menu > .envuelve{flex:1}
+  .menu > .envuelve > button{width:100%;justify-content:center}
+  .menu > button{justify-content:center;padding:.55rem .5rem}
+  .usuario{margin:.3rem 0 .1rem auto;order:1}
+  .govco .acc{margin-left:0}
+}
+
+/* ---------- barra lateral de enlaces ---------- */
+.lateral{position:fixed;right:0;top:calc(50% + 95px);transform:translateY(-50%);z-index:35;
+  display:flex;flex-direction:column;gap:4px;padding:6px 6px 6px 8px;
+  background:var(--surface);border:1px solid var(--line);border-right:none;
+  border-radius:10px 0 0 10px;box-shadow:-2px 0 14px -8px rgba(21,36,29,.45)}
+.lateral a{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  color:#fff;text-decoration:none;font-size:.92rem;transition:transform .15s,filter .15s;position:relative}
+.lateral a:hover,.lateral a:focus-visible{transform:scale(1.12);filter:brightness(1.12)}
+.lateral a.az{background:var(--govco)}
+.lateral a.ve{background:var(--gob)}
+.lateral a.vc{background:var(--gob-clar,#12805A)}
+.lateral .glb{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);
+  background:var(--ink);color:var(--ground);font-size:.72rem;font-weight:600;white-space:nowrap;
+  padding:.25rem .55rem;border-radius:5px;opacity:0;pointer-events:none;transition:opacity .15s}
+.lateral a:hover .glb,.lateral a:focus-visible .glb{opacity:1}
+.lateral i{font-style:normal;font-size:.74rem;font-weight:700;letter-spacing:-.02em}
+.lateral .sep{height:1px;background:var(--line);margin:3px 2px}
+@media (max-width:900px){.lateral{display:none}}
+
+/* ---------- pie institucional ---------- */
+.pie-inst{background:var(--surface-2);margin-top:2rem}
+.banda{display:grid;grid-template-columns:minmax(0,1fr) auto;background:var(--gob-osc);color:#fff;overflow:hidden}
+.bv-items{display:flex;flex-wrap:wrap;align-items:center;gap:.2rem 0;padding:.85rem 1.1rem}
+.bv{display:flex;align-items:center;gap:.6rem;padding:.15rem 1.15rem;border-right:1px solid rgba(255,255,255,.28)}
+.bv:last-child{border-right:none}
+.bv .ic{font-size:1.25rem;opacity:.95;width:26px;text-align:center;flex:none}
+.bv .tx{display:flex;flex-direction:column;line-height:1.15}
+.bv .tx b{font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.04em}
+.bv .tx span{font-size:.74rem;opacity:.9}
+.bv-marca{background:var(--gob-clar);padding:.85rem 1.6rem .85rem 2.6rem;display:flex;flex-direction:column;justify-content:center;
+  clip-path:polygon(34px 0,100% 0,100% 100%,0 100%)}
+.bv-marca .t{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.02em;color:rgba(255,255,255,.92)}
+.bv-marca .s{font-size:.76rem;opacity:.9;line-height:1.25}
+@media (min-width:901px){.bv-marca{padding-right:4.2rem}}
+@media (max-width:820px){
+  .banda{grid-template-columns:1fr}
+  .bv-marca{clip-path:none;padding:.8rem 1.1rem;border-top:1px solid rgba(255,255,255,.25)}
+  .bv{border-right:none;padding:.25rem 1.1rem}
+}
+.pie-inst .pie-in{max-width:1180px;margin:0 auto;padding:1.6rem 1.15rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.4rem}
+.pie-inst h4{font-family:var(--display);font-size:.83rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gob);margin-bottom:.5rem}
+.pie-inst p,.pie-inst li{font-size:.82rem;color:var(--ink-2);line-height:1.5}
+.pie-inst ul{list-style:none;padding:0}
+.pie-inst .marca-pie{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
+.pie-legal{border-top:1px solid var(--line);background:var(--surface)}
+.pie-legal-in{max-width:1180px;margin:0 auto;padding:.8rem 1.15rem;display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center;justify-content:space-between;font-size:.76rem;color:var(--muted)}
+
+/* ---------- contenido ---------- */
+.pagina{max-width:1180px;margin:0 auto;padding:clamp(1.1rem,2.6vw,2rem) 1.15rem 3rem;display:flex;flex-direction:column;gap:1.5rem}
+.cabecera{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem}
+.cabecera h2{font-size:clamp(1.45rem,2.5vw,1.95rem);font-weight:700;letter-spacing:-.015em}
+.cabecera p{color:var(--muted);max-width:70ch;font-size:.95rem}
+
+/* ---------- enlaces del menú (son <a>, se ven como los botones) ---------- */
+.menu > a.enlace-menu{background:transparent;border:none;border-bottom:3px solid transparent;color:var(--ink-2);
+  padding:.7rem .95rem .55rem;cursor:pointer;font-weight:600;font-size:.88rem;display:inline-flex;align-items:center;gap:.4rem;
+  text-transform:uppercase;letter-spacing:.03em;text-decoration:none}
+.menu > a.enlace-menu:hover{color:var(--gob);background:var(--surface-2)}
+.menu > a.enlace-menu[aria-current="page"]{color:var(--gob);border-bottom-color:var(--gob)}
+.menu-usr .enlace-menu-usr{display:block;width:100%;text-align:left;padding:.5rem .6rem;border-radius:8px;
+  font-size:.88rem;color:var(--ink);text-decoration:none}
+.menu-usr .enlace-menu-usr:hover{background:var(--surface-2)}
+a.item-mod{text-decoration:none;color:inherit}
+a.btn{text-decoration:none}

@@ -1,0 +1,58 @@
+/* =========================================================
+   base — variables de color, tipografía y reset
+   Plataforma CTeI Casanare
+   ========================================================= */
+
+html{color-scheme:light}
+:root{
+  --gob:#0B5D3B;          /* verde institucional Gobernación de Casanare */
+  --gob-osc:#08472D;
+  --gob-clar:#12805A;
+  --gob-suave:#EAF3EE;
+  --gob-borde:#C7DCD0;
+  --dorado:#C08A2E;
+  --dorado-suave:#FBF3E4;
+  --govco:#3366CC;
+  --govco-osc:#26478D;
+  --tri-amarillo:#FCD116;
+  --tri-azul:#003893;
+  --tri-rojo:#CE1126;
+
+  --ground:#FFFFFF;
+  --surface:#FFFFFF;
+  --surface-2:#F3F7F4;
+  --line:#DFE6E1;
+  --line-fuerte:#C2CFC7;
+  --ink:#15241D;
+  --ink-2:#3D5147;
+  --muted:#697F73;
+  --on-color:#FFFFFF;
+
+  --ok:#1F7A4C;
+  --ok-suave:#E6F3EC;
+  --warn:#9A6A12;
+  --warn-suave:#FBF1DE;
+  --crit:#A5382B;
+  --crit-suave:#FAE8E5;
+
+  --mod:#0B5D3B;
+  --mod-suave:#EAF3EE;
+
+  --sombra:0 1px 2px rgba(21,36,29,.05), 0 8px 22px -16px rgba(21,36,29,.25);
+  --r:10px;
+  --sans:"Work Sans", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --display:"Montserrat", "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.16;text-wrap:balance;font-weight:600}
+p{margin:0}
+button{font:inherit;color:inherit}
+ul,ol{margin:0;padding-left:1.15rem}
+li{margin:.18rem 0}
+:focus-visible{outline:2px solid var(--dorado);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+

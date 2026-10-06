@@ -1,0 +1,61 @@
+{
+  "moduloId": "m6",
+  "numero": 6,
+  "titulo": "Seguimiento, evidencias, sostenibilidad y cierre del proyecto",
+  "notaMinima": 70,
+  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntas": [
+    {
+      "id": "m6-p1",
+      "enunciado": "La diferencia entre avance físico y avance financiero es que:",
+      "opciones": [
+        "Son equivalentes",
+        "El físico mide productos y metas ejecutadas; el financiero mide recursos comprometidos y pagados",
+        "El financiero mide productos",
+        "El físico mide el tiempo transcurrido"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p2",
+      "enunciado": "Una fuente de verificación es:",
+      "opciones": [
+        "El indicador mismo",
+        "El documento o registro que demuestra el valor reportado del indicador",
+        "La meta del proyecto",
+        "El responsable del seguimiento"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p3",
+      "enunciado": "La sostenibilidad de un proyecto se refiere a:",
+      "opciones": [
+        "Terminarlo dentro del plazo",
+        "Que los resultados permanezcan en el territorio después de finalizada la financiación",
+        "Reducir el presupuesto",
+        "Usar energías limpias únicamente"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p4",
+      "enunciado": "Las lecciones aprendidas sirven para:",
+      "opciones": [
+        "Cumplir un formato de cierre",
+        "Mejorar la formulación y ejecución de iniciativas futuras",
+        "Justificar desviaciones",
+        "Evaluar al equipo"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    }
+  ]
+}

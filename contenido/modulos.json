@@ -1,0 +1,320 @@
+{
+  "actualizado": "2026-09-14",
+  "fuente": "Documento «MÓDULOS DE FORMACIÓN» — Gobernación de Casanare",
+  "modulos": [
+    {
+      "id": "m1",
+      "numero": 1,
+      "titulo": "Gestión del conocimiento, innovación pública y valor público",
+      "color": "#096C36",
+      "colorSuave": "#E6F1EA",
+      "duracion": "8 horas",
+      "nivel": "Introductorio",
+      "producto": "Ficha de Oportunidad de Innovación",
+      "publicado": true,
+      "infografias": [
+        {
+          "material": "inf-ip-que-es",
+          "titulo": "¿Qué es la innovación pública?"
+        },
+        {
+          "material": "inf-ip-principios",
+          "titulo": "Principios de la innovación pública"
+        },
+        {
+          "material": "inf-ip-valor",
+          "titulo": "Innovación pública y generación de valor público"
+        }
+      ],
+      "proposito": "Fortalecer la capacidad del participante para reconocer y utilizar el conocimiento disponible en entidades, comunidades y territorios, comprender la innovación pública como una herramienta de mejora y formular una oportunidad inicial orientada a generar valor público.",
+      "competencia": "Reconoce la gestión del conocimiento y la innovación pública como herramientas para identificar oportunidades de mejora, fortalecer la toma de decisiones y generar valor público en el territorio.",
+      "resultados": [
+        "Explica qué es la gestión del conocimiento y su importancia para la gestión pública territorial.",
+        "Diferencia conocimiento tácito y explícito.",
+        "Reconoce la innovación pública como proceso de mejora, adaptación o creación de soluciones.",
+        "Relaciona conocimiento, innovación y valor público.",
+        "Identifica una oportunidad de innovación aplicable a una situación real."
+      ],
+      "contenidos": [
+        "Gestión del conocimiento",
+        "Conocimiento tácito y explícito",
+        "Innovación pública",
+        "Valor público",
+        "Oportunidades de innovación territorial",
+        "Construcción de la Ficha de Oportunidad de Innovación"
+      ],
+      "recursos": [
+        "Audiovisuales del Módulo 1",
+        "Guía complementaria del Módulo 1",
+        "Mapa inicial de conocimiento",
+        "Ficha de Oportunidad de Innovación",
+        "Caso aplicado al contexto de Casanare"
+      ],
+      "actividad": "Seleccionar una situación susceptible de mejora e identificar conocimiento disponible, actores, capacidades, brechas y valor público esperado.",
+      "formativa": "Autoevaluación conceptual + lista de chequeo de la Ficha de Oportunidad.",
+      "conexion": "La oportunidad identificada se convierte en el insumo para delimitar y formular técnicamente el problema en el Módulo 2."
+    },
+    {
+      "id": "m2",
+      "numero": 2,
+      "titulo": "Problemas públicos, retos territoriales y diagnóstico basado en evidencia",
+      "color": "#E65401",
+      "colorSuave": "#FCEDE2",
+      "duracion": "8 horas",
+      "nivel": "Básico-aplicado",
+      "producto": "Árbol de problemas, árbol de objetivos y reto territorial",
+      "publicado": true,
+      "infografias": [
+        {
+          "material": "inf-ciclo-formulacion",
+          "titulo": "Del problema a la solución: el ciclo de formulación"
+        },
+        {
+          "material": "inf-arbol-objetivos",
+          "titulo": "Del problema a la solución: árbol de objetivos"
+        }
+      ],
+      "proposito": "Transformar una necesidad u oportunidad general en un problema público o territorial claramente delimitado, sustentado con evidencia y analizado mediante causas, efectos, población, actores y objetivos.",
+      "competencia": "Analiza problemas territoriales con evidencia y aplica herramientas básicas de diagnóstico para formular retos susceptibles de convertirse en proyectos.",
+      "resultados": [
+        "Diferencia necesidad, problema y solución.",
+        "Formula un problema central como situación negativa existente.",
+        "Identifica evidencia pertinente para sustentar el problema.",
+        "Analiza causas y efectos mediante árbol de problemas.",
+        "Delimita población y territorio afectados.",
+        "Construye árbol de objetivos y formula un reto territorial.",
+        "Explora alternativas preliminares sin anticipar una única solución."
+      ],
+      "contenidos": [
+        "De la oportunidad al problema central",
+        "Evidencia: cómo demostrar que el problema existe",
+        "Causas y efectos",
+        "Población y actores",
+        "Árbol del problema",
+        "Árbol de objetivos",
+        "Formulación del reto territorial",
+        "Alternativas preliminares de solución"
+      ],
+      "recursos": [
+        "Audiovisuales del Módulo 2",
+        "Guía complementaria del Módulo 2",
+        "Ficha de fuentes y evidencias",
+        "Plantilla de árbol de problemas y objetivos",
+        "Ficha de Identificación del Proyecto"
+      ],
+      "actividad": "Construir el árbol de problemas de una situación real, identificar evidencia y transformar el diagnóstico en un reto territorial.",
+      "formativa": "Autoevaluación + revisión de coherencia entre problema, causas, efectos y objetivos.",
+      "conexion": "El diagnóstico consolidado se convierte en la base para estructurar el proyecto bajo lógica MGA en el Módulo 3."
+    },
+    {
+      "id": "m3",
+      "numero": 3,
+      "titulo": "Formulación de proyectos bajo Metodología General Ajustada – MGA",
+      "color": "#0066C8",
+      "colorSuave": "#E3EFFB",
+      "duracion": "10 horas",
+      "nivel": "Básico-aplicado",
+      "producto": "Perfil básico de proyecto",
+      "publicado": true,
+      "infografias": [
+        {
+          "material": "inf-mga",
+          "titulo": "Del problema al proyecto: la ruta MGA"
+        }
+      ],
+      "proposito": "Convertir el diagnóstico territorial en una estructura preliminar de proyecto de inversión pública, articulando objetivos, alternativa, cadena de valor, productos, actividades, indicadores, presupuesto, cronograma, riesgos y sostenibilidad.",
+      "competencia": "Estructura los componentes básicos de un proyecto de inversión pública bajo la lógica de la Metodología General Ajustada – MGA.",
+      "resultados": [
+        "Relaciona problema, objetivo y alternativa de solución.",
+        "Construye una cadena de valor coherente.",
+        "Diferencia productos de actividades.",
+        "Formula indicadores y metas básicas.",
+        "Organiza un presupuesto y cronograma preliminar.",
+        "Identifica riesgos y acciones de sostenibilidad.",
+        "Verifica la coherencia interna del perfil del proyecto."
+      ],
+      "contenidos": [
+        "Proyecto de inversión pública y MGA",
+        "Objetivos y alternativas",
+        "Cadena de valor",
+        "Productos y actividades",
+        "Indicadores y metas",
+        "Presupuesto y costos",
+        "Cronograma",
+        "Riesgos",
+        "Sostenibilidad",
+        "Perfil básico de proyecto"
+      ],
+      "recursos": [
+        "Audiovisuales del Módulo 3",
+        "Guía complementaria del Módulo 3",
+        "Plantilla de perfil básico MGA",
+        "Ejemplo aplicado a Casanare",
+        "Cuaderno de herramientas y plantillas"
+      ],
+      "actividad": "Diligenciar progresivamente un perfil básico de proyecto usando el problema trabajado en el módulo anterior.",
+      "formativa": "Autoevaluación + lista de coherencia interna del perfil MGA.",
+      "conexion": "El perfil formulado será analizado en el Módulo 4 para determinar su componente CTeI, actores y capacidades requeridas."
+    },
+    {
+      "id": "m4",
+      "numero": 4,
+      "titulo": "Sistema CTeI y formulación de proyectos de Ciencia, Tecnología e Innovación",
+      "color": "#003B7F",
+      "colorSuave": "#E3EAF4",
+      "duracion": "8 horas",
+      "nivel": "Básico-aplicado",
+      "producto": "Matriz de clasificación CTeI + mapa de actores y aliados",
+      "publicado": true,
+      "infografias": [
+        {
+          "material": "inf-sncti",
+          "titulo": "¿Qué es el Sistema Nacional de CTeI?"
+        },
+        {
+          "material": "inf-actores",
+          "titulo": "Los actores del ecosistema CTeI: quíntuple hélice"
+        },
+        {
+          "material": "inf-proyecto-ctei",
+          "titulo": "Cuando una idea se convierte en innovación"
+        }
+      ],
+      "proposito": "Reconocer el ecosistema CTeI y analizar cuándo una iniciativa puede considerarse de Ciencia, Tecnología e Innovación, identificando componente de conocimiento, tipología, novedad, resultados, evidencias, actores y aliados.",
+      "competencia": "Diferencia tipologías y resultados CTeI, reconoce actores del sistema y clasifica preliminarmente una iniciativa según su componente de conocimiento.",
+      "resultados": [
+        "Reconoce actores y roles del Sistema CTeI bajo enfoque de quíntuple hélice.",
+        "Identifica aliados técnicos, académicos, productivos, públicos, sociales y territoriales.",
+        "Diferencia investigación, desarrollo tecnológico, innovación, apropiación social, transferencia y fortalecimiento de capacidades.",
+        "Identifica el componente de conocimiento de una iniciativa.",
+        "Analiza novedad, resultados y evidencias CTeI.",
+        "Reconoce niveles de madurez tecnológica cuando aplique.",
+        "Construye una matriz de clasificación y un mapa de actores."
+      ],
+      "contenidos": [
+        "Sistema CTeI y quíntuple hélice",
+        "Actores, roles y capacidades",
+        "¿Qué hace que un proyecto sea CTeI?",
+        "Investigación",
+        "Desarrollo tecnológico",
+        "Innovación",
+        "Apropiación social del conocimiento",
+        "Transferencia y fortalecimiento de capacidades",
+        "Novedad, resultados y evidencias",
+        "Madurez tecnológica cuando aplique",
+        "Mapa de actores y clasificación CTeI"
+      ],
+      "recursos": [
+        "Audiovisuales del Módulo 4",
+        "Guía complementaria del Módulo 4",
+        "Matriz de clasificación CTeI",
+        "Mapa de actores y aliados",
+        "Caso aplicado al contexto de Casanare"
+      ],
+      "actividad": "Retomar el perfil MGA, identificar su componente de conocimiento, clasificarlo preliminarmente y determinar los actores y capacidades necesarias.",
+      "formativa": "Clasificación de casos + lista de chequeo del componente CTeI y del mapa de actores.",
+      "conexion": "La iniciativa clasificada y sus aliados se preparan en el Módulo 5 para identificar una fuente de financiación y responder a una convocatoria."
+    },
+    {
+      "id": "m5",
+      "numero": 5,
+      "titulo": "Convocatorias, fuentes de financiación y preparación de proyectos",
+      "color": "#D4025B",
+      "colorSuave": "#FBE4EE",
+      "duracion": "8 horas",
+      "nivel": "Básico-aplicado",
+      "producto": "Lista de preparación del proyecto para convocatoria",
+      "publicado": true,
+      "infografias": [
+        {
+          "material": "inf-convocatorias",
+          "titulo": "Del proyecto a la oportunidad: la ruta para preparar tu proyecto"
+        }
+      ],
+      "proposito": "Fortalecer la capacidad para identificar fuentes de financiación, interpretar términos de referencia, verificar elegibilidad y pertinencia, organizar requisitos, soportes y aliados, y determinar el nivel de preparación de un proyecto para una convocatoria.",
+      "competencia": "Reconoce fuentes y mecanismos de financiación, interpreta condiciones de convocatoria y organiza requisitos, documentos y evidencias para preparar una postulación.",
+      "resultados": [
+        "Identifica mecanismos y fuentes de financiación compatibles con una iniciativa.",
+        "Interpreta los elementos básicos de unos Términos de Referencia.",
+        "Diferencia elegibilidad, pertinencia y preparación.",
+        "Reconoce requisitos habilitantes y criterios de evaluación.",
+        "Organiza aliados, documentos y evidencias de capacidad.",
+        "Aplica una lista de preparación antes de postular."
+      ],
+      "contenidos": [
+        "Fuentes y mecanismos de financiación",
+        "Cómo leer una convocatoria",
+        "Términos de Referencia – TdR",
+        "Elegibilidad y pertinencia",
+        "Requisitos habilitantes",
+        "Aliados y roles",
+        "Documentos y soportes",
+        "Criterios de evaluación",
+        "Presupuesto y contrapartidas",
+        "Evidencias de capacidad",
+        "Lista de preparación del proyecto"
+      ],
+      "recursos": [
+        "Audiovisuales del Módulo 5",
+        "Guía complementaria del Módulo 5",
+        "Lista de preparación para convocatoria",
+        "Matriz de lectura de Términos de Referencia",
+        "Caso simulado de convocatoria"
+      ],
+      "actividad": "Aplicar una lista de preparación a la iniciativa formulada y determinar si está lista para postular, requiere maduración o debe buscar otra fuente.",
+      "formativa": "Autoevaluación + lista de chequeo de convocatoria.",
+      "conexion": "Una iniciativa financiada o lista para ejecución requiere seguimiento, evidencias, gestión de riesgos y sostenibilidad, aspectos desarrollados en el Módulo 6."
+    },
+    {
+      "id": "m6",
+      "numero": 6,
+      "titulo": "Seguimiento, evidencias, sostenibilidad y cierre del proyecto",
+      "color": "#6A259C",
+      "colorSuave": "#EFE6F6",
+      "duracion": "6 horas",
+      "nivel": "Básico-aplicado",
+      "producto": "Plan básico de seguimiento y sostenibilidad + Ficha Básica Final de Proyecto",
+      "publicado": true,
+      "infografias": [
+        {
+          "material": "inf-convocatorias",
+          "titulo": "Del proyecto a la oportunidad: seguimiento, evidencias y sostenibilidad"
+        }
+      ],
+      "proposito": "Comprender la gestión del proyecto durante su ejecución y cierre, integrando seguimiento físico y financiero, indicadores, evidencias, riesgos, aprendizaje y sostenibilidad, y consolidar los productos de los módulos anteriores en una ficha final.",
+      "competencia": "Aplica criterios básicos de seguimiento, evidencias, gestión de riesgos y sostenibilidad para demostrar avances, tomar decisiones y consolidar el cierre del proyecto.",
+      "resultados": [
+        "Diferencia avance físico y avance financiero.",
+        "Relaciona indicadores, metas y fuentes de verificación.",
+        "Organiza evidencias de ejecución y trazabilidad.",
+        "Identifica alertas, riesgos y desviaciones.",
+        "Reconoce el seguimiento como fuente de aprendizaje y toma de decisiones.",
+        "Formula acciones de sostenibilidad.",
+        "Consolida la Ficha Básica Final de Proyecto de Innovación Pública o CTeI."
+      ],
+      "contenidos": [
+        "De la formulación a la ejecución",
+        "Seguimiento físico",
+        "Seguimiento financiero",
+        "Indicadores y alertas",
+        "Evidencias y trazabilidad",
+        "Riesgos y desviaciones",
+        "Aprendizaje y ajustes",
+        "Sostenibilidad",
+        "Cierre del proyecto",
+        "Lecciones aprendidas",
+        "Ejercicio final integrador"
+      ],
+      "recursos": [
+        "Audiovisuales del Módulo 6",
+        "Guía complementaria del Módulo 6",
+        "Plan básico de seguimiento y sostenibilidad",
+        "Ficha Básica Final de Proyecto",
+        "Cuaderno transversal de herramientas"
+      ],
+      "actividad": "Construir un plan básico de seguimiento y consolidar los productos de los seis módulos en la ficha final del proyecto.",
+      "formativa": "Autoevaluación final + revisión integral de la ficha de proyecto.",
+      "conexion": "Cierre del curso y consolidación de una iniciativa preliminar que puede avanzar a procesos posteriores de estructuración técnica, validación o presentación a fuentes de financiación."
+    }
+  ]
+}

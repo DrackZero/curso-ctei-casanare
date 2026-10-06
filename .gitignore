@@ -1,0 +1,20 @@
+# sistema
+.DS_Store
+Thumbs.db
+
+# editores
+.vscode/
+.idea/
+
+# temporales
+*.log
+*.tmp
+_borradores/
+
+# exportes de revisión descargados
+revision-materiales-*.json
+
+# respuestas correctas de las evaluaciones: confidenciales
+claves.sql
+supabase/claves*.sql
+.env*

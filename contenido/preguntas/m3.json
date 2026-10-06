@@ -1,0 +1,61 @@
+{
+  "moduloId": "m3",
+  "numero": 3,
+  "titulo": "Formulación de proyectos bajo Metodología General Ajustada – MGA",
+  "notaMinima": 70,
+  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntas": [
+    {
+      "id": "m3-p1",
+      "enunciado": "En la cadena de valor de un proyecto, un producto es:",
+      "opciones": [
+        "Una tarea que ejecuta el equipo",
+        "El bien o servicio entregado que genera el resultado esperado",
+        "El presupuesto asignado",
+        "Un indicador de gestión"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p2",
+      "enunciado": "La alternativa de solución se elige:",
+      "opciones": [
+        "Antes de analizar el problema",
+        "Después de construir el árbol de objetivos, comparando opciones viables",
+        "Según el monto disponible",
+        "Según la dependencia que formula"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p3",
+      "enunciado": "Un indicador básico debe permitir:",
+      "opciones": [
+        "Describir la intención del proyecto",
+        "Medir de forma verificable el avance hacia una meta",
+        "Justificar el gasto",
+        "Sustituir el cronograma"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p4",
+      "enunciado": "La MGA es:",
+      "opciones": [
+        "Un formato de contratación",
+        "La metodología para formular y registrar proyectos de inversión pública",
+        "Un sistema de seguimiento financiero",
+        "Una norma de archivo"
+      ],
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    }
+  ]
+}
