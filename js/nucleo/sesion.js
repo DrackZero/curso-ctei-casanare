@@ -9,13 +9,16 @@ export const CLAVE_MINIMA = 10;
 
 /* Traduce los errores de Supabase Auth sin revelar si una cuenta existe. */
 function mensaje(error) {
+  console.error('Supabase Auth:', error && error.status, error && error.code, error && error.message);
   const m = String(error && (error.code || error.message) || '');
   if (/invalid_credentials|Invalid login/i.test(m)) return 'El correo o la contraseña no coinciden.';
   if (/email_not_confirmed|not confirmed/i.test(m))  return 'Confirme su correo con el enlace que le enviamos antes de ingresar.';
   if (/weak_password|pwned|leaked/i.test(m))          return 'Esa contraseña es débil o aparece en filtraciones conocidas. Elija otra.';
   if (/rate|too many|429/i.test(m))                   return 'Demasiados intentos. Espere unos minutos e inténtelo de nuevo.';
   if (/user_already_exists|already registered/i.test(m)) return 'No fue posible completar la inscripción con ese correo. Si ya tiene cuenta, ingrese o recupere su contraseña.';
-  return 'No fue posible completar la operación. Inténtelo de nuevo.';
+  if (/sending.*email|smtp/i.test(m))                return 'No fue posible enviar el correo de confirmación. Avise a la coordinación del curso.';
+  if (/database error/i.test(m))                     return 'Error del servidor al crear la cuenta. Avise a la coordinación del curso.';
+  return 'No fue posible completar la operación (' + m + ').';
 }
 
 export function validarClave(clave) {
