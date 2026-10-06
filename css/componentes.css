@@ -72,3 +72,19 @@ td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .aviso{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%);background:var(--gob);color:#fff;
   padding:.55rem 1.05rem;border-radius:999px;font-size:.85rem;box-shadow:var(--sombra);z-index:90}
 .nota-pie{font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.8rem}
+
+/* ---------- ayudas del formulario de acceso ---------- */
+.clave-envoltura{position:relative;display:flex}
+.clave-envoltura input{padding-right:5.2rem}
+.ver-clave{position:absolute;right:.35rem;top:50%;transform:translateY(-50%);font:inherit;font-size:.78rem;font-weight:600;
+  padding:.3rem .6rem;border:1px solid var(--line-fuerte);border-radius:6px;background:var(--surface);color:var(--gob);cursor:pointer}
+.ver-clave:focus-visible{outline:2px solid var(--gob);outline-offset:2px}
+.aviso-campo{font-size:.78rem;color:var(--ink-2);min-height:1rem}
+.aviso-campo:empty{display:none}
+.btn-enlace{font:inherit;background:none;border:none;padding:0;color:var(--gob);text-decoration:underline;cursor:pointer;font-weight:600}
+.requisitos{list-style:none;margin:-.2rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.15rem .8rem;font-size:.78rem;color:var(--ink-2)}
+.requisitos li::before{content:"○ ";color:var(--line-fuerte)}
+.requisitos li.cumple{color:var(--ok)}
+.requisitos li.cumple::before{content:"✓ ";color:var(--ok)}
+.campo input[aria-invalid="true"]{border-color:var(--crit);box-shadow:0 0 0 3px color-mix(in srgb,var(--crit) 18%,transparent)}
+@media (max-width:420px){.requisitos{grid-template-columns:1fr}}

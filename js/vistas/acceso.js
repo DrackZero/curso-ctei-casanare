@@ -65,9 +65,17 @@ async function pintar() {
       <div class="campo"><label for="f-nombre">Nombre completo</label><input id="f-nombre" name="nombre" autocomplete="name" maxlength="120" required placeholder="Nombre y apellidos"></div>
       <div class="campo"><label for="f-entidad">Entidad u organización <span class="pista">(opcional)</span></label><input id="f-entidad" name="entidad" autocomplete="organization" maxlength="160" placeholder="Alcaldía, universidad, empresa o independiente"></div>`}
       ${modo === 'nueva' ? '' : `
-      <div class="campo"><label for="f-correo">Correo electrónico</label><input id="f-correo" name="correo" type="email" autocomplete="email" maxlength="254" required placeholder="nombre@correo.com"></div>`}
-      ${modo === 'recuperar' ? '' : `
-      <div class="campo"><label for="f-clave">${modo === 'nueva' ? 'Nueva contraseña' : 'Contraseña'}</label><input id="f-clave" name="clave" type="password" autocomplete="${entrar ? 'current-password' : 'new-password'}" maxlength="72" required placeholder="${entrar ? '' : `Mínimo ${sesion.CLAVE_MINIMA} caracteres, con letras y números`}"></div>`}
+      <div class="campo"><label for="f-correo">Correo electrónico</label><input id="f-correo" name="correo" type="email" autocomplete="email" maxlength="254" required placeholder="nombre@correo.com"><span class="aviso-campo" id="sugerencia-correo" role="status"></span></div>`}
+      ${modo === 'recuperar' ? '' : campoClave('f-clave', 'clave', modo === 'nueva' ? 'Nueva contraseña' : 'Contraseña',
+        entrar ? 'current-password' : 'new-password', entrar ? '' : `Mínimo ${sesion.CLAVE_MINIMA} caracteres, con letras y números`)}
+      ${modo === 'registro' || modo === 'nueva' ? `
+      <ul class="requisitos" id="requisitos" aria-live="polite">
+        <li data-req="largo">Al menos ${sesion.CLAVE_MINIMA} caracteres</li>
+        <li data-req="letra">Contiene letras</li>
+        <li data-req="numero">Contiene números</li>
+        <li data-req="espacios">Sin espacios al inicio ni al final</li>
+      </ul>
+      ${campoClave('f-clave2', 'clave2', 'Repita la contraseña', 'new-password', 'Escríbala de nuevo')}` : ''}
       ${modo !== 'registro' ? '' : `
       <label class="pista" style="display:flex;gap:.5rem;align-items:flex-start">
         <input type="checkbox" name="acepto" style="margin-top:.2rem">
@@ -84,6 +92,57 @@ async function pintar() {
   conectar();
 }
 
+/* Campo de contraseña con botón para mostrarla y aviso de mayúsculas activadas. */
+function campoClave(id, nombre, etiqueta, autocompletar, ayuda) {
+  return `
+      <div class="campo">
+        <label for="${id}">${etiqueta}</label>
+        <div class="clave-envoltura">
+          <input id="${id}" name="${nombre}" type="password" autocomplete="${autocompletar}" maxlength="72" required placeholder="${esc(ayuda)}">
+          <button type="button" class="ver-clave" data-ver="${id}" aria-controls="${id}" aria-pressed="false">Mostrar</button>
+        </div>
+        <span class="aviso-campo" data-aviso="${id}" role="status"></span>
+      </div>`;
+}
+
+/* Errores frecuentes de digitación en dominios de correo. */
+const DOMINIOS = { 'gmial.com':'gmail.com', 'gmai.com':'gmail.com', 'gmal.com':'gmail.com', 'gmail.co':'gmail.com', 'gmail.con':'gmail.com',
+  'hotmial.com':'hotmail.com', 'hotmal.com':'hotmail.com', 'hotmail.co':'hotmail.com', 'hotmail.con':'hotmail.com',
+  'outlok.com':'outlook.com', 'outlook.co':'outlook.com', 'yaho.com':'yahoo.com', 'yahoo.co':'yahoo.com' };
+
+function sugerenciaCorreo(correo) {
+  const [usuario, dominio] = String(correo).trim().toLowerCase().split('@');
+  return usuario && DOMINIOS[dominio] ? usuario + '@' + DOMINIOS[dominio] : null;
+}
+
+function avisar(id, texto) {
+  const e = document.querySelector(`[data-aviso="${id}"]`);
+  if (e) e.textContent = texto || '';
+}
+
+/* Revisión antes de enviar: devuelve [campo, mensaje] del primer problema, o null. */
+function revisar(f) {
+  if (modo === 'registro' && f.nombre.value.trim().split(/\s+/).filter(Boolean).length < 2)
+    return [f.nombre, 'Escriba su nombre y al menos un apellido.'];
+  if (f.correo) {
+    const c = f.correo.value.trim();
+    if (!c) return [f.correo, 'Escriba su correo electrónico.'];
+    if (/\s/.test(c)) return [f.correo, 'El correo no puede tener espacios.'];
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c)) return [f.correo, 'El correo no parece válido. Revise que tenga @ y un dominio (por ejemplo, nombre@gmail.com).'];
+  }
+  if (f.clave) {
+    if (!f.clave.value) return [f.clave, 'Escriba la contraseña.'];
+    if (modo === 'registro' || modo === 'nueva') {
+      if (f.clave.value !== f.clave.value.trim()) return [f.clave, 'La contraseña tiene espacios al inicio o al final. Quítelos para evitar errores al ingresar.'];
+      const mala = sesion.validarClave(f.clave.value);
+      if (mala) return [f.clave, mala];
+      if (f.clave.value !== f.clave2.value) return [f.clave2, 'Las dos contraseñas no coinciden. Use «Mostrar» para revisarlas.'];
+    }
+  }
+  if (modo === 'registro' && !f.acepto.checked) return [f.acepto, 'Debe autorizar el tratamiento de sus datos personales para inscribirse.'];
+  return null;
+}
+
 const TITULOS = {
   entrar:    ['Ingreso al aula', 'Use el correo con el que se inscribió al curso.', 'Ingresar'],
   registro:  ['Inscripción gratuita', 'La inscripción no tiene costo ni requisitos previos.', 'Inscribirme y comenzar'],
@@ -96,12 +155,69 @@ function conectar() {
 
   f.querySelectorAll('[data-modo]').forEach(b => b.addEventListener('click', () => { modo = b.dataset.modo; mensajeOk = ''; pintar(); }));
 
+  // Mostrar u ocultar la contraseña
+  f.querySelectorAll('[data-ver]').forEach(b => b.addEventListener('click', () => {
+    const campo = document.getElementById(b.dataset.ver);
+    const ver = campo.type === 'password';
+    campo.type = ver ? 'text' : 'password';
+    b.textContent = ver ? 'Ocultar' : 'Mostrar';
+    b.setAttribute('aria-pressed', String(ver));
+    campo.focus();
+  }));
+
+  // Aviso de mayúsculas activadas
+  f.querySelectorAll('input[type="password"]').forEach(campo => {
+    const MAYUS = 'Atención: las mayúsculas están activadas.';
+    const aviso = document.querySelector(`[data-aviso="${campo.id}"]`);
+    const quitar = () => { if (aviso.textContent === MAYUS) avisar(campo.id, ''); };
+    const revisarMayus = e => {
+      if (!e.getModifierState) return;
+      if (e.getModifierState('CapsLock')) avisar(campo.id, MAYUS); else quitar();
+    };
+    campo.addEventListener('keyup', revisarMayus);
+    campo.addEventListener('keydown', revisarMayus);
+    campo.addEventListener('blur', quitar);
+  });
+
+  // Sugerencia de corrección del correo («¿Quiso decir…?»)
+  if (f.correo) f.correo.addEventListener('blur', () => {
+    const sug = sugerenciaCorreo(f.correo.value);
+    const e = document.getElementById('sugerencia-correo');
+    if (!e) return;
+    e.innerHTML = sug ? `¿Quiso decir <button type="button" class="btn-enlace">${esc(sug)}</button>?` : '';
+    const b = e.querySelector('button');
+    if (b) b.addEventListener('click', () => { f.correo.value = sug; e.innerHTML = ''; });
+  });
+
+  // Requisitos de la contraseña en vivo y coincidencia de las dos
+  const lista = document.getElementById('requisitos');
+  const actualizar = () => {
+    if (!lista) return;
+    const v = f.clave.value;
+    const ok = { largo: v.length >= sesion.CLAVE_MINIMA, letra: /[a-zA-Z]/.test(v), numero: /[0-9]/.test(v), espacios: v.length > 0 && v === v.trim() };
+    lista.querySelectorAll('[data-req]').forEach(li => li.classList.toggle('cumple', ok[li.dataset.req]));
+    if (f.clave2.value) avisar('f-clave2', f.clave2.value === v ? '✓ Las contraseñas coinciden.' : 'Las contraseñas aún no coinciden.');
+  };
+  if (lista) { f.clave.addEventListener('input', actualizar); f.clave2.addEventListener('input', actualizar); }
+
+  f.querySelectorAll('input').forEach(i => i.addEventListener('input', () => i.removeAttribute('aria-invalid')));
+
   f.addEventListener('submit', async ev => {
     ev.preventDefault();
     const err = document.getElementById('acceso-err');
     const boton = f.querySelector('button[type="submit"]');
     err.textContent = '';
+    const problema = revisar(f);
+    if (problema) {
+      const [campo, texto] = problema;
+      err.textContent = texto;
+      campo.setAttribute('aria-invalid', 'true');
+      campo.focus();
+      return;
+    }
     boton.disabled = true;
+    boton.dataset.texto = boton.textContent;
+    boton.textContent = 'Un momento…';
     try {
       if (modo === 'entrar') {
         const r = await sesion.ingresar(f.correo.value, f.clave.value);
@@ -124,6 +240,7 @@ function conectar() {
       }
     } finally {
       boton.disabled = false;
+      if (boton.dataset.texto) boton.textContent = boton.dataset.texto;
     }
   });
 }

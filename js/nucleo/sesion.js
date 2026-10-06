@@ -40,7 +40,7 @@ export async function inscribir({ nombre, correo, clave, entidad, aceptoDatos })
   nombre = String(nombre || '').trim();
   correo = String(correo || '').trim().toLowerCase();
   entidad = String(entidad || '').trim();
-  if (nombre.length < 3 || nombre.length > 120) return { ok:false, error:'Escriba su nombre completo.' };
+  if (nombre.length < 3 || nombre.length > 120 || nombre.split(/\s+/).length < 2) return { ok:false, error:'Escriba su nombre completo.' };
   if (!CORREO.test(correo))  return { ok:false, error:'Escriba un correo electrónico válido.' };
   if (entidad.length > 160)  return { ok:false, error:'El nombre de la entidad es demasiado largo.' };
   const mala = validarClave(clave);
