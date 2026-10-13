@@ -33,7 +33,8 @@ async function pintar() {
     <div>
       <span class="rotulo">Módulo ${m.numero} · Resultado</span>
       <h2>${ok ? 'Módulo aprobado' : 'Aún no alcanza el mínimo'}</h2>
-      <p>${ok ? 'El resultado quedó registrado en su historial de notas.'
+      <p>${r.prueba ? '<strong>Modo prueba:</strong> este resultado no se guardó.'
+        : ok ? 'El resultado quedó registrado en su historial de notas.'
               : `Necesita ${c.notaMinima} puntos para aprobar. Puede repasar el módulo y volver a presentar la evaluación.`}</p>
     </div>
   </div>

@@ -138,7 +138,7 @@ export function intentosDe(usuarioId, moduloId) {
 export async function presentarEvaluacion(moduloId, respuestas) {
   const { data, error } = await db().rpc('presentar_evaluacion', { p_modulo: moduloId, p_respuestas: respuestas });
   if (error) return { ok: false, error: error.message };
-  cache.intentos.push(aIntento({ ...data, usuario_id: cache.sesion, modulo_id: moduloId, fecha: new Date().toISOString() }));
+  if (!data.prueba) cache.intentos.push(aIntento({ ...data, usuario_id: cache.sesion, modulo_id: moduloId, fecha: new Date().toISOString() }));
   return { ok: true, resultado: data };
 }
 

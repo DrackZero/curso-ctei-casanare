@@ -27,6 +27,9 @@ async function pintar() {
     </div>
     <a class="btn btn-linea btn-sm" href="${PAGINAS.modulo}?m=${m.id}">Volver al módulo</a>
   </div>
+  ${u.rol === 'admin' ? `<div class="aviso-datos" role="note"><span aria-hidden="true">ⓘ</span>
+    <span><strong>Modo prueba.</strong> Como coordinación puede presentar la evaluación para revisar las preguntas;
+    el resultado se muestra pero no se guarda ni cuenta en las estadísticas.</span></div>` : ''}
   <form class="quiz" id="form-quiz">
     ${preguntas.map((q, i) => `
       <fieldset class="q" style="border:none;margin:0" data-q="${i}">

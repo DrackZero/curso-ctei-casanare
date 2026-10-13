@@ -32,7 +32,7 @@ async function pintar() {
     .filter(i => i.mat && i.mat.archivo);
 
   const av = progreso.avanceModulo(u.id, m.id, secs);
-  const listo = av === 100;
+  const listo = av === 100 || u.rol === 'admin';   // la coordinación puede presentar en modo prueba
   const e = progreso.estadoModulo(u.id, m, secs);
   const nota = evaluacion.mejorNota(u.id, m.id);
   const intentos = almacen.intentosDe(u.id, m.id).slice().sort((a, b) => b.fecha.localeCompare(a.fecha));

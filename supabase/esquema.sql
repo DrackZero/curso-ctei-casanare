@@ -41,7 +41,7 @@ begin
   insert into public.perfiles (id, nombre, correo, entidad, acepto_datos)
   values (
     new.id,
-    left(coalesce(nullif(trim(new.raw_user_meta_data->>'nombre'), ''), split_part(new.email, '@', 1)), 120),
+    left(coalesce(nullif(trim(new.raw_user_meta_data->>'nombre'), ''), case when char_length(split_part(new.email, '@', 1)) >= 3 then split_part(new.email, '@', 1) else lower(new.email) end), 120),
     lower(new.email),
     left(coalesce(trim(new.raw_user_meta_data->>'entidad'), ''), 160),
     case when (new.raw_user_meta_data->>'acepto_datos') = 'true' then now() end
@@ -58,7 +58,7 @@ create trigger al_crear_usuario
 -- Reparación: crea el perfil de cuentas que existan sin él (por ejemplo, creadas desde el
 -- panel de Supabase antes de instalar este esquema). Sin perfil, la cuenta no puede ingresar.
 insert into public.perfiles (id, nombre, correo)
-select u.id, left(coalesce(nullif(trim(u.raw_user_meta_data->>'nombre'), ''), split_part(u.email, '@', 1)), 120), lower(u.email)
+select u.id, left(coalesce(nullif(trim(u.raw_user_meta_data->>'nombre'), ''), case when char_length(split_part(u.email, '@', 1)) >= 3 then split_part(u.email, '@', 1) else lower(u.email) end), 120), lower(u.email)
   from auth.users u
  where u.email is not null
    and not exists (select 1 from public.perfiles p where p.id = u.id)
@@ -164,6 +164,7 @@ declare
   v_correctas int := 0;
   v_nota      int;
   v_id        uuid;
+  v_prueba    boolean := public.es_admin();   -- la coordinación presenta en modo prueba: no se guarda
   i           int;
 begin
   if v_uid is null then
@@ -171,13 +172,13 @@ begin
   end if;
 
   -- Freno básico contra envíos automatizados: un intento cada 10 segundos.
-  if exists (select 1 from public.intentos
+  if not v_prueba and exists (select 1 from public.intentos
              where usuario_id = v_uid and fecha > now() - interval '10 seconds') then
     raise exception 'Espere unos segundos antes de volver a enviar la evaluación' using errcode = 'P0001';
   end if;
 
   -- Regla del curso: la evaluación se habilita al consultar las 7 secciones del módulo.
-  if (select count(*) from public.progreso where usuario_id = v_uid and modulo_id = p_modulo) < 7 then
+  if not v_prueba and (select count(*) from public.progreso where usuario_id = v_uid and modulo_id = p_modulo) < 7 then
     raise exception 'Consulte las siete secciones del módulo antes de presentar la evaluación' using errcode = 'P0001';
   end if;
 
@@ -198,13 +199,15 @@ begin
   end loop;
   v_nota := round(v_correctas::numeric / v_total * 100);
 
-  insert into public.intentos (usuario_id, modulo_id, nota, correctas, total, respuestas)
-  values (v_uid, p_modulo, v_nota, v_correctas, v_total, p_respuestas)
-  returning id into v_id;
+  if not v_prueba then
+    insert into public.intentos (usuario_id, modulo_id, nota, correctas, total, respuestas)
+    values (v_uid, p_modulo, v_nota, v_correctas, v_total, p_respuestas)
+    returning id into v_id;
+  end if;
 
   -- Solo después de calificar se revelan las respuestas correctas y la retroalimentación.
   return jsonb_build_object(
-    'id', v_id, 'nota', v_nota, 'correctas', v_correctas, 'total', v_total,
+    'id', v_id, 'prueba', v_prueba, 'nota', v_nota, 'correctas', v_correctas, 'total', v_total,
     'respuestas', to_jsonb(p_respuestas),
     'claves', to_jsonb(v_claves), 'retroalimentacion', to_jsonb(v_retro)
   );
@@ -212,5 +215,8 @@ end;
 $$;
 
 revoke all on function public.presentar_evaluacion(text, int[]) from public, anon;
+
+-- Limpieza: intentos que la coordinación haya presentado antes de existir el modo prueba.
+delete from public.intentos i using public.perfiles p where p.id = i.usuario_id and p.rol = 'admin';
 grant execute on function public.presentar_evaluacion(text, int[]) to authenticated;
 revoke all on function public.crear_perfil() from public, anon, authenticated;
