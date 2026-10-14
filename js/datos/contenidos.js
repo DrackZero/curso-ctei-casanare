@@ -1,31 +1,45 @@
-/* Carga el contenido del curso desde los archivos JSON.
-   Requiere servidor local: fetch no funciona con file://  */
+/* Carga el contenido del curso (curso, módulos, materiales y preguntas).
+   Primero busca la versión editada por la coordinación en la base de datos (tabla
+   contenido); si no existe, usa el archivo JSON del repositorio (contenido/*.json). */
 
 import { RUTA_CONTENIDO } from '../config.js';
+import * as almacen from './almacen.js';
 
 const cache = {};
 
-async function leer(archivo) {
-  if (cache[archivo]) return cache[archivo];
-  const r = await fetch(RUTA_CONTENIDO + archivo, { cache: 'no-cache' });
-  if (!r.ok) throw new Error('No se pudo leer ' + archivo + ' (' + r.status + ')');
-  cache[archivo] = await r.json();
-  return cache[archivo];
+async function leer(clave, archivo) {
+  if (cache[clave]) return cache[clave];
+  cache[clave] = (async () => {
+    const guardado = await almacen.leerContenido(clave);
+    if (guardado) return guardado;
+    const r = await fetch(RUTA_CONTENIDO + archivo, { cache: 'no-cache' });
+    if (!r.ok) throw new Error('No se pudo leer ' + archivo + ' (' + r.status + ')');
+    return r.json();
+  })();
+  try { return await cache[clave]; } catch (e) { delete cache[clave]; throw e; }
 }
 
-export async function curso()      { return leer('curso.json'); }
-export async function materiales() { return leer('materiales.json'); }
+/* Olvida lo leído para que la siguiente lectura traiga lo recién guardado. */
+export function olvidar() { for (const k in cache) delete cache[k]; }
+
+export async function curso()      { return leer('curso', 'curso.json'); }
+export async function materiales() { return leer('materiales', 'materiales.json'); }
+
+/* Documento completo de módulos, incluidos los no publicados (para el editor). */
+export async function documentoModulos() { return leer('modulos', 'modulos.json'); }
 
 export async function modulos() {
-  const d = await leer('modulos.json');
+  const d = await documentoModulos();
   return d.modulos.filter(m => m.publicado !== false);
 }
 export async function modulo(id) {
   return (await modulos()).find(m => m.id === id) || null;
 }
+export async function documentoPreguntas(moduloId) {
+  return leer('preguntas:' + moduloId, 'preguntas/' + moduloId + '.json');
+}
 export async function preguntas(moduloId) {
-  const d = await leer('preguntas/' + moduloId + '.json');
-  return d.preguntas;
+  return (await documentoPreguntas(moduloId)).preguntas;
 }
 export async function secciones() { return (await curso()).secciones; }
 

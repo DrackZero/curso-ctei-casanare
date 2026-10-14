@@ -96,6 +96,25 @@ Nadie puede darse el rol de coordinación desde el navegador.
 | Ley 1581 de 2012 | Autorización explícita al inscribirse (queda la fecha en `perfiles.acepto_datos`) y página de política de datos |
 | Dependencia de un CDN para la autenticación | La librería de Supabase está copiada en `js/vendor/supabase.js` (v2.117.2) |
 
+## Editar el contenido (coordinación)
+
+Menú del usuario → **Editor de contenidos**. Cuatro pestañas:
+
+| Pestaña | Qué se puede hacer |
+|---|---|
+| Preguntas | Editar enunciados, opciones (2 a 6), respuesta correcta, retroalimentación y estado de validación; agregar, eliminar y reordenar preguntas |
+| Módulos | Editar todos los textos del módulo, publicarlo u ocultarlo, y elegir qué infografías y documentos descargables muestra |
+| Materiales | Subir imágenes o PDF (máx. 20 MB), reemplazar el archivo, cambiar título/módulo/estado y eliminar |
+| Historial | Ver las versiones anteriores y restaurar una |
+
+- Los cambios se publican al pulsar **Guardar** y los ven todos los participantes.
+- Mientras algo no se haya editado nunca, la plataforma sigue usando los archivos de
+  `contenido/` del repositorio.
+- Las respuestas correctas se guardan aparte (tabla `claves`) y nunca llegan al navegador
+  de un participante antes de calificar.
+- Los archivos se guardan en Supabase Storage (bucket `materiales`, creado por el esquema).
+  El plan gratuito incluye 1 GB.
+
 ## Mantenimiento
 
 - **Crear cuentas siempre desde la plataforma** (pestaña *Inscribirme*), no desde el panel

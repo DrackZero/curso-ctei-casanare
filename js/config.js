@@ -7,8 +7,9 @@
 export const BASE = new URL('../', import.meta.url).href;
 
 /* Devuelve la ruta completa de un recurso del proyecto.
-   recurso('assets/img/marca/escudo-casanare.png') */
-export const recurso = (ruta) => BASE + String(ruta).replace(/^\/+/, '');
+   recurso('assets/img/marca/escudo-casanare.png')
+   Las direcciones completas (archivos subidos a Supabase Storage) se devuelven tal cual. */
+export const recurso = (ruta) => /^https:\/\//.test(ruta) ? String(ruta) : BASE + String(ruta).replace(/^\/+/, '');
 
 export const RUTA_CONTENIDO = BASE + 'contenido/';
 export const UMBRAL_DEFECTO = 70;
@@ -29,7 +30,8 @@ export const PAGINAS = {
   admin:      BASE + 'paginas/admin.html',
   revision:   BASE + 'paginas/revision.html',
   reporte:    BASE + 'paginas/reporte.html',
-  privacidad: BASE + 'paginas/privacidad.html'
+  privacidad: BASE + 'paginas/privacidad.html',
+  editor:     BASE + 'paginas/editor.html'
 };
 
 export const ENLACES_INSTITUCIONALES = {

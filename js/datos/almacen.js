@@ -145,6 +145,55 @@ export async function presentarEvaluacion(moduloId, respuestas) {
 /* Respuestas correctas por módulo. Solo llegan con el perfil de coordinación. */
 export function claves() { return cache.claves; }
 
+/* ---- contenido editable (solo la coordinación escribe; RLS lo garantiza) ---- */
+export async function leerContenido(clave) {
+  const { data, error } = await db().from('contenido').select('datos').eq('clave', clave).maybeSingle();
+  if (error) { console.warn('contenido', clave, error.message); return null; }
+  return data ? data.datos : null;
+}
+
+export async function guardarContenido(clave, datos) {
+  const { error } = await db().from('contenido').upsert({ clave, datos });
+  return error ? { ok: false, error: error.message } : { ok: true };
+}
+
+/* Preguntas con sus respuestas correctas: el servidor las separa en contenido + claves. */
+export async function guardarPreguntas(moduloId, documento) {
+  const { error } = await db().rpc('guardar_preguntas', { p_modulo: moduloId, p_documento: documento });
+  if (error) return { ok: false, error: error.message };
+  cache.claves[moduloId] = documento.preguntas.map((q, i) =>
+    ({ modulo_id: moduloId, orden: i, correcta: q.correcta, retroalimentacion: q.retroalimentacion || '' }));
+  return { ok: true };
+}
+
+export async function historialContenido(limite = 30) {
+  const { data, error } = await db().from('contenido_historial')
+    .select('id,clave,guardado,guardado_por').order('guardado', { ascending: false }).limit(limite);
+  return error ? [] : data;
+}
+export async function versionContenido(id) {
+  const { data, error } = await db().from('contenido_historial').select('clave,datos').eq('id', id).single();
+  return error ? null : data;
+}
+
+/* Archivos del curso en Supabase Storage (bucket público «materiales»). */
+export async function subirArchivo(archivo, carpeta) {
+  const limpio = archivo.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9.]+/g, '-').replace(/^-+|-+$/g, '');
+  const ruta = `${carpeta}/${Date.now()}-${limpio}`;
+  const { error } = await db().storage.from('materiales').upload(ruta, archivo, { contentType: archivo.type, upsert: false });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true, url: db().storage.from('materiales').getPublicUrl(ruta).data.publicUrl };
+}
+
+export async function borrarArchivo(url) {
+  const marca = '/storage/v1/object/public/materiales/';
+  const i = String(url).indexOf(marca);
+  if (i < 0) return { ok: true };   // archivo del repositorio: no se borra desde aquí
+  const { error } = await db().storage.from('materiales').remove([decodeURIComponent(url.slice(i + marca.length))]);
+  return error ? { ok: false, error: error.message } : { ok: true };
+}
+
 /* ---- resultado del último intento (para la pantalla de resultado) ---- */
 export function guardarUltimoResultado(r) {
   try { sessionStorage.setItem('ctei_ultimo_resultado', JSON.stringify(r)); } catch (e) {}

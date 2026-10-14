@@ -77,6 +77,7 @@ export async function pintarCabecera(contenedor, { activo = '', moduloActivo = '
             </div>
             <a class="enlace-menu-usr" href="${PAGINAS.notas}">Mis notas y avance</a>
             ${u.rol === 'admin' ? `<a class="enlace-menu-usr" href="${PAGINAS.admin}">Seguimiento del curso</a>
+            <a class="enlace-menu-usr" href="${PAGINAS.editor}">Editor de contenidos</a>
             <a class="enlace-menu-usr" href="${PAGINAS.revision}">Revisión de materiales</a>` : ''}
             <button type="button" id="btn-salir">Cerrar sesión</button>
           </div>

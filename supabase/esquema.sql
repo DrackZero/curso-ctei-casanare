@@ -220,3 +220,138 @@ revoke all on function public.presentar_evaluacion(text, int[]) from public, ano
 delete from public.intentos i using public.perfiles p where p.id = i.usuario_id and p.rol = 'admin';
 grant execute on function public.presentar_evaluacion(text, int[]) to authenticated;
 revoke all on function public.crear_perfil() from public, anon, authenticated;
+
+-- ================================================================== contenido editable
+-- Módulos, catálogo de materiales y preguntas (SIN respuestas correctas) se guardan como
+-- documentos JSON, con la misma forma que los archivos de contenido/. Mientras una clave no
+-- exista aquí, la plataforma usa el archivo JSON del repositorio.
+create table if not exists public.contenido (
+  clave           text primary key check (clave ~ '^(curso|modulos|materiales|preguntas:m[0-9]{1,2})$'),
+  datos           jsonb not null,
+  actualizado     timestamptz not null default now(),
+  actualizado_por uuid references public.perfiles(id) on delete set null
+);
+
+-- Versiones anteriores: cada cambio guarda lo que había, para poder restaurarlo.
+create table if not exists public.contenido_historial (
+  id          bigint generated always as identity primary key,
+  clave       text not null,
+  datos       jsonb not null,
+  guardado    timestamptz not null default now(),
+  guardado_por uuid references public.perfiles(id) on delete set null
+);
+create index if not exists contenido_historial_clave on public.contenido_historial (clave, guardado desc);
+
+create or replace function public.contenido_registrar()
+returns trigger
+language plpgsql security definer set search_path = ''
+as $$
+begin
+  if tg_op = 'UPDATE' or tg_op = 'DELETE' then
+    insert into public.contenido_historial (clave, datos, guardado_por) values (old.clave, old.datos, auth.uid());
+  end if;
+  if tg_op = 'DELETE' then return old; end if;
+  new.actualizado := now();
+  new.actualizado_por := auth.uid();
+  return new;
+end;
+$$;
+
+drop trigger if exists contenido_versiones on public.contenido;
+create trigger contenido_versiones
+  before insert or update or delete on public.contenido
+  for each row execute function public.contenido_registrar();
+
+alter table public.contenido enable row level security;
+alter table public.contenido_historial enable row level security;
+
+drop policy if exists contenido_leer on public.contenido;
+create policy contenido_leer on public.contenido for select to anon, authenticated using (true);
+drop policy if exists contenido_crear on public.contenido;
+create policy contenido_crear on public.contenido for insert to authenticated with check (public.es_admin());
+drop policy if exists contenido_editar on public.contenido;
+create policy contenido_editar on public.contenido for update to authenticated using (public.es_admin()) with check (public.es_admin());
+drop policy if exists contenido_borrar on public.contenido;
+create policy contenido_borrar on public.contenido for delete to authenticated using (public.es_admin());
+
+drop policy if exists historial_leer on public.contenido_historial;
+create policy historial_leer on public.contenido_historial for select to authenticated using (public.es_admin());
+
+revoke all on public.contenido, public.contenido_historial from anon, authenticated;
+grant select on public.contenido to anon, authenticated;
+grant insert, update, delete on public.contenido to authenticated;
+grant select on public.contenido_historial to authenticated;
+
+-- Guarda el banco de preguntas de un módulo: el texto público va a 'contenido' y las
+-- respuestas correctas a 'claves', en una sola operación. Solo la coordinación.
+create or replace function public.guardar_preguntas(p_modulo text, p_documento jsonb)
+returns void
+language plpgsql security definer set search_path = ''
+as $$
+declare
+  v_preguntas jsonb := p_documento->'preguntas';
+  v_q         jsonb;
+  v_i         int := 0;
+  v_n         int;
+  v_correcta  int;
+begin
+  if not public.es_admin() then
+    raise exception 'Solo la coordinación puede editar preguntas' using errcode = '42501';
+  end if;
+  if p_modulo !~ '^m[0-9]{1,2}$' then
+    raise exception 'Módulo no válido' using errcode = 'P0001';
+  end if;
+  if jsonb_typeof(v_preguntas) <> 'array' or jsonb_array_length(v_preguntas) = 0 then
+    raise exception 'El módulo debe tener al menos una pregunta' using errcode = 'P0001';
+  end if;
+
+  for v_q in select * from jsonb_array_elements(v_preguntas) loop
+    v_i := v_i + 1;
+    v_n := coalesce(jsonb_array_length(v_q->'opciones'), 0);
+    v_correcta := (v_q->>'correcta')::int;
+    if coalesce(trim(v_q->>'enunciado'), '') = '' then
+      raise exception 'La pregunta % no tiene enunciado', v_i using errcode = 'P0001';
+    end if;
+    if v_n < 2 or v_n > 6 then
+      raise exception 'La pregunta % debe tener entre 2 y 6 opciones', v_i using errcode = 'P0001';
+    end if;
+    if v_correcta is null or v_correcta < 0 or v_correcta >= v_n then
+      raise exception 'La pregunta % no tiene marcada una respuesta correcta válida', v_i using errcode = 'P0001';
+    end if;
+  end loop;
+
+  delete from public.claves where modulo_id = p_modulo;
+  insert into public.claves (modulo_id, orden, correcta, retroalimentacion)
+  select p_modulo, (o - 1)::int, (q->>'correcta')::int, coalesce(q->>'retroalimentacion', '')
+    from jsonb_array_elements(v_preguntas) with ordinality as t(q, o);
+
+  insert into public.contenido (clave, datos)
+  values ('preguntas:' || p_modulo, jsonb_set(p_documento, '{preguntas}',
+    (select jsonb_agg(q - 'correcta' - 'retroalimentacion' order by o)
+       from jsonb_array_elements(v_preguntas) with ordinality as t(q, o))))
+  on conflict (clave) do update set datos = excluded.datos;
+end;
+$$;
+
+revoke all on function public.guardar_preguntas(text, jsonb) from public, anon;
+grant execute on function public.guardar_preguntas(text, jsonb) to authenticated;
+revoke all on function public.contenido_registrar() from public, anon, authenticated;
+
+-- ================================================================== archivos (Supabase Storage)
+-- Bucket público de lectura: imágenes y PDF del curso. Solo la coordinación sube o borra.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('materiales', 'materiales', true, 20971520,
+        array['image/jpeg', 'image/png', 'image/webp', 'application/pdf'])
+on conflict (id) do update
+  set public = excluded.public, file_size_limit = excluded.file_size_limit,
+      allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists materiales_subir on storage.objects;
+create policy materiales_subir on storage.objects for insert to authenticated
+  with check (bucket_id = 'materiales' and public.es_admin());
+drop policy if exists materiales_reemplazar on storage.objects;
+create policy materiales_reemplazar on storage.objects for update to authenticated
+  using (bucket_id = 'materiales' and public.es_admin());
+drop policy if exists materiales_borrar on storage.objects;
+create policy materiales_borrar on storage.objects for delete to authenticated
+  using (bucket_id = 'materiales' and public.es_admin());

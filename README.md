@@ -50,7 +50,7 @@ cuenta de coordinación es una cuenta inscrita a la que se le da el rol `admin` 
 | `js/nucleo/` | Reglas: sesión, avance, calificación y estadísticas |
 | `js/ui/` | Encabezado, pie, avisos, gráficas y tablero |
 | `js/vistas/` | Una por página |
-| `contenido/` | Textos de los módulos, preguntas y catálogo de materiales — **editable sin programar** |
+| `contenido/` | Contenido inicial de módulos, preguntas y materiales. La coordinación lo edita desde el **Editor de contenidos** de la plataforma |
 | `docs/` | Documentación del proyecto |
 | `supabase/` | Esquema de base de datos, reglas de seguridad y script para crear la coordinación |
 

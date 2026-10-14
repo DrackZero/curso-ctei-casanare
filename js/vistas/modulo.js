@@ -11,6 +11,7 @@ import { esc, fecha, parametro, abrirLupa } from '../ui/componentes.js';
 const id = parametro('m') || 'm1';
 let seccionAbierta = null;
 let indiceInfo = 0;
+let catalogoActual = [];
 
 const u = await montarMarco({ activo: 'modulo', moduloActivo: id });
 if (u) pintar();
@@ -27,6 +28,7 @@ async function pintar() {
   document.title = 'Módulo ' + m.numero + ' · ' + c.nombreCorto;
 
   const catalogo = (await contenidos.materiales()).materiales;
+  catalogoActual = catalogo;
   const piezas = m.infografias
     .map(i => ({ ...i, mat: catalogo.find(x => x.id === i.material) }))
     .filter(i => i.mat && i.mat.archivo);
@@ -137,7 +139,13 @@ function cuerpoSeccion(m, k) {
   if (k === 'competencia') return `<p>${esc(m.competencia)}</p>`;
   if (k === 'resultados')  return `<p style="margin-bottom:.5rem">Al terminar el módulo, el participante:</p><ol>${m.resultados.map(r => `<li>${esc(r)}</li>`).join('')}</ol>`;
   if (k === 'contenidos')  return `<ol>${m.contenidos.map(c => `<li>${esc(c)}</li>`).join('')}</ol>`;
-  if (k === 'recursos')    return `<ul>${m.recursos.map(r => `<li>${esc(r)}</li>`).join('')}</ul><p class="nota-pie">Los archivos descargables se habilitan al cargar los materiales definitivos del curso.</p>`;
+  if (k === 'recursos') {
+    const docs = (m.documentos || []).map(d => ({ ...d, mat: catalogoActual.find(x => x.id === d.material) })).filter(d => d.mat && d.mat.archivo);
+    return `<ul>${m.recursos.map(r => `<li>${esc(r)}</li>`).join('')}</ul>` + (docs.length
+      ? `<h4 style="margin-top:.8rem">Descargables</h4><ul>${docs.map(d =>
+          `<li><a href="${esc(recurso(d.mat.archivo))}" target="_blank" rel="noopener">${esc(d.titulo || d.mat.titulo)}</a></li>`).join('')}</ul>`
+      : '<p class="nota-pie">Los archivos descargables se habilitan al cargar los materiales definitivos del curso.</p>');
+  }
   if (k === 'actividad')   return `<p>${esc(m.actividad)}</p><p style="margin-top:.6rem"><strong>Evaluación formativa:</strong> ${esc(m.formativa)}</p>`;
   if (k === 'producto')    return `<p><strong>${esc(m.producto)}</strong></p><p style="margin-top:.6rem"><strong>Conexión con el siguiente módulo:</strong> ${esc(m.conexion)}</p>`;
   return '';
