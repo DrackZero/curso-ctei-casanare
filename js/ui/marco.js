@@ -1,6 +1,7 @@
 /* Arma la página completa: encabezado, barra lateral y pie.
    Cada vista solo se ocupa de su contenido. */
 
+import './carga.js';
 import * as almacen from '../datos/almacen.js';
 import * as sesion from '../nucleo/sesion.js';
 import { pintarCabecera } from './cabecera.js';

@@ -4,6 +4,7 @@
    es vectorial (texto seleccionable, gráficas nítidas) y no depende de
    ninguna librería externa. */
 
+import '../ui/carga.js';
 import * as almacen from '../datos/almacen.js';
 import * as sesion from '../nucleo/sesion.js';
 import { PAGINAS, recurso } from '../config.js';

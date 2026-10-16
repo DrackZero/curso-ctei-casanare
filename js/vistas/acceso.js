@@ -1,5 +1,6 @@
 /* Pantalla de ingreso e inscripción. */
 
+import '../ui/carga.js';
 import * as almacen from '../datos/almacen.js';
 import * as contenidos from '../datos/contenidos.js';
 import * as sesion from '../nucleo/sesion.js';

@@ -56,3 +56,23 @@ li{margin:.18rem 0}
 :focus-visible{outline:2px solid var(--dorado);outline-offset:2px;border-radius:4px}
 @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
 
+
+/* ---------- pantalla de carga ---------- */
+.carga{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:var(--surface,#FFFFFF);
+  transition:opacity .35s ease, visibility .35s ease}
+.carga.saliendo{opacity:0;visibility:hidden}
+.carga-in{display:flex;flex-direction:column;align-items:center;gap:.35rem;text-align:center;padding:1.5rem}
+.carga-escudo{height:72px;width:auto;margin-bottom:.5rem;animation:carga-latido 1.8s ease-in-out infinite}
+.carga-nombre{font-family:Montserrat,system-ui,sans-serif;font-weight:700;font-size:1.05rem;color:var(--gob-osc,#0B4A2C)}
+.carga-curso{font-size:.85rem;color:var(--ink-2,#3D5147)}
+.carga-barra{width:180px;height:4px;border-radius:4px;background:var(--line,#DCE5DF);overflow:hidden;margin-top:1.1rem}
+.carga-barra span{display:block;width:40%;height:100%;border-radius:4px;background:var(--gob,#0F6B3E);animation:carga-avance 1.1s ease-in-out infinite}
+.carga-texto{font-size:.8rem;color:var(--ink-2,#3D5147);margin-top:.4rem;letter-spacing:.02em}
+@keyframes carga-avance{0%{transform:translateX(-110%)}100%{transform:translateX(260%)}}
+@keyframes carga-latido{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@media (prefers-reduced-motion:reduce){
+  .carga-escudo{animation:none}
+  .carga-barra span{animation:none;width:100%;opacity:.6}
+  .carga{transition:none}
+}
+@media print{.carga{display:none}}

@@ -22,7 +22,18 @@
   <link rel="stylesheet" href="../css/reporte.css">
 </head>
 
-<body class="cuerpo-informe">
+<body class="cuerpo-informe" aria-busy="true">
+  <!-- Pantalla de carga: visible de inmediato; js/ui/carga.js la retira al terminar -->
+  <div id="carga" class="carga" role="status" aria-live="polite" aria-busy="true">
+    <div class="carga-in">
+      <img src="../assets/img/marca/escudo-casanare.png" alt="" class="carga-escudo">
+      <div class="carga-nombre">Gobernación de Casanare</div>
+      <div class="carga-curso">Innovación pública y proyectos CTeI</div>
+      <div class="carga-barra" aria-hidden="true"><span></span></div>
+      <div class="carga-texto">Cargando…</div>
+    </div>
+  </div>
+
 
   <!-- Barra de acciones: no sale en el PDF -->
   <div class="barra-informe no-imprimir">
