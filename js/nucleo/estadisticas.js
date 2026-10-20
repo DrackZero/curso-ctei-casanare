@@ -118,13 +118,17 @@ export function porModulo(ix) {
 /* ---------- distribución de notas de todos los intentos ---------- */
 export function distribucion(ix) {
   const { intentos, umbral } = ix;
-  const valores = [...new Set(intentos.map(a => a.nota))].sort((a, b) => a - b);
-  // con 4 preguntas las notas posibles son 0, 25, 50, 75 y 100: se muestran tal cual.
-  // si hubiera más de 8 valores distintos se agrupan en tramos de 10.
-  if (valores.length <= 8) {
-    const posibles = [...new Set([0, 25, 50, 75, 100, ...valores])].sort((a, b) => a - b);
+  // Preguntas por intento más frecuente: define las notas posibles (con 8 → 0, 13, 25 … 100).
+  const frec = {};
+  intentos.forEach(a => { frec[a.total] = (frec[a.total] || 0) + 1; });
+  const n = Number(Object.keys(frec).sort((a, b) => frec[b] - frec[a])[0]) || 8;
+  const valores = [...new Set(intentos.map(a => a.nota))];
+  const posibles = [...new Set([...Array.from({ length: n + 1 }, (_, k) => Math.round(k / n * 100)), ...valores])].sort((a, b) => a - b);
+  // Si las notas posibles son pocas se muestran tal cual; si no, se agrupan en tramos de 10.
+  if (posibles.length <= 11) {
     return posibles.map(v => ({
-      clase: String(v), desde: v, hasta: v,
+      clase: String(v), desde: v, hasta: v, n,
+      aciertos: Math.round(v / 100 * n),
       cuenta: intentos.filter(a => a.nota === v).length,
       aprueba: v >= umbral
     }));
@@ -148,7 +152,7 @@ export function porPregunta(ix) {
     const lista = preguntas[m.id] || [];
     const conRespuestas = intentos.filter(a => a.moduloId === m.id && Array.isArray(a.respuestas));
     lista.forEach((q, i) => {
-      const elegidas = conRespuestas.map(a => a.respuestas[i]).filter(r => r !== undefined && r !== null);
+      const elegidas = conRespuestas.map(a => a.respuestas[i]).filter(r => r !== undefined && r !== null && r >= 0);   // -1: no salió en ese intento
       const correctas = elegidas.filter(r => r === q.correcta).length;
       const cuenta = q.opciones.map((_, j) => elegidas.filter(r => r === j).length);
       const incorrectas = cuenta.map((c, j) => ({ j, c })).filter(x => x.j !== q.correcta && x.c > 0).sort((a, b) => b.c - a.c);
@@ -197,7 +201,7 @@ export function filasCSV(ix, usuariosPorId) {
     const u = usuariosPorId[a.usuarioId] || {};
     const lista = preguntas[a.moduloId] || [];
     const marcas = Array.from({ length: maxP }, (_, i) =>
-      !lista[i] || !Array.isArray(a.respuestas) ? '' : (a.respuestas[i] === lista[i].correcta ? 1 : 0));
+      !lista[i] || !Array.isArray(a.respuestas) || !(a.respuestas[i] >= 0) ? '' : (a.respuestas[i] === lista[i].correcta ? 1 : 0));
     return [a.fecha.slice(0, 10), u.nombre || a.usuarioId, u.correo || '', u.entidad || '', a.moduloId,
             a.nota, a.nota >= umbral ? 'si' : 'no', a.correctas, a.total, ...marcas];
   });

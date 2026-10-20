@@ -152,20 +152,28 @@ revoke all on public.intentos from anon, authenticated;
 grant select on public.intentos to authenticated;
 
 -- ------------------------------------------------------------------ calificación en el servidor
+-- p_respuestas trae una posición por cada pregunta del banco del módulo: el índice de la
+-- opción elegida, o -1 si esa pregunta no salió en este intento. Cada intento presenta
+-- «preguntasPorIntento» preguntas al azar (dato del documento de preguntas en 'contenido';
+-- si no está, se presentan todas).
 create or replace function public.presentar_evaluacion(p_modulo text, p_respuestas int[])
 returns jsonb
 language plpgsql security definer set search_path = ''
 as $$
 declare
-  v_uid       uuid := auth.uid();
-  v_claves    int[];
-  v_retro     text[];
-  v_total     int;
-  v_correctas int := 0;
-  v_nota      int;
-  v_id        uuid;
-  v_prueba    boolean := public.es_admin();   -- la coordinación presenta en modo prueba: no se guarda
-  i           int;
+  v_uid        uuid := auth.uid();
+  v_claves     int[];
+  v_retro      text[];
+  v_total      int;
+  v_por        int;
+  v_presentadas int := 0;
+  v_correctas  int := 0;
+  v_nota       int;
+  v_id         uuid;
+  v_prueba     boolean := public.es_admin();   -- la coordinación presenta en modo prueba: no se guarda
+  v_ver_claves int[] := '{}';
+  v_ver_retro  text[] := '{}';
+  i            int;
 begin
   if v_uid is null then
     raise exception 'Sesión requerida' using errcode = '42501';
@@ -191,25 +199,44 @@ begin
     raise exception 'El módulo no tiene evaluación configurada' using errcode = 'P0001';
   end if;
   if coalesce(array_length(p_respuestas, 1), 0) <> v_total then
-    raise exception 'Debe responder las % preguntas', v_total using errcode = 'P0001';
+    raise exception 'La evaluación cambió mientras la presentaba. Recargue la página e inténtelo de nuevo' using errcode = 'P0001';
   end if;
 
+  select (datos->>'preguntasPorIntento')::int into v_por
+    from public.contenido where clave = 'preguntas:' || p_modulo;
+  v_por := least(v_total, greatest(1, coalesce(v_por, v_total)));
+
   for i in 1..v_total loop
-    if p_respuestas[i] = v_claves[i] then v_correctas := v_correctas + 1; end if;
+    if p_respuestas[i] is null or p_respuestas[i] < -1 then
+      raise exception 'Respuesta no válida' using errcode = 'P0001';
+    end if;
+    if p_respuestas[i] >= 0 then
+      v_presentadas := v_presentadas + 1;
+      if p_respuestas[i] = v_claves[i] then v_correctas := v_correctas + 1; end if;
+      v_ver_claves := v_ver_claves || v_claves[i];
+      v_ver_retro  := v_ver_retro  || v_retro[i];
+    else
+      v_ver_claves := v_ver_claves || null::int;   -- no se revela la respuesta de lo que no salió
+      v_ver_retro  := v_ver_retro  || null::text;
+    end if;
   end loop;
-  v_nota := round(v_correctas::numeric / v_total * 100);
+
+  if v_presentadas <> v_por then
+    raise exception 'Debe responder las % preguntas de la evaluación', v_por using errcode = 'P0001';
+  end if;
+  v_nota := round(v_correctas::numeric / v_presentadas * 100);
 
   if not v_prueba then
     insert into public.intentos (usuario_id, modulo_id, nota, correctas, total, respuestas)
-    values (v_uid, p_modulo, v_nota, v_correctas, v_total, p_respuestas)
+    values (v_uid, p_modulo, v_nota, v_correctas, v_presentadas, p_respuestas)
     returning id into v_id;
   end if;
 
-  -- Solo después de calificar se revelan las respuestas correctas y la retroalimentación.
+  -- Solo después de calificar se revelan las respuestas correctas, y solo de las preguntas presentadas.
   return jsonb_build_object(
-    'id', v_id, 'prueba', v_prueba, 'nota', v_nota, 'correctas', v_correctas, 'total', v_total,
+    'id', v_id, 'prueba', v_prueba, 'nota', v_nota, 'correctas', v_correctas, 'total', v_presentadas,
     'respuestas', to_jsonb(p_respuestas),
-    'claves', to_jsonb(v_claves), 'retroalimentacion', to_jsonb(v_retro)
+    'claves', to_jsonb(v_ver_claves), 'retroalimentacion', to_jsonb(v_ver_retro)
   );
 end;
 $$;
@@ -319,6 +346,11 @@ begin
       raise exception 'La pregunta % no tiene marcada una respuesta correcta válida', v_i using errcode = 'P0001';
     end if;
   end loop;
+
+  if (p_documento->>'preguntasPorIntento') is not null and
+     ((p_documento->>'preguntasPorIntento')::int < 1 or (p_documento->>'preguntasPorIntento')::int > jsonb_array_length(v_preguntas)) then
+    raise exception 'Preguntas por intento debe estar entre 1 y %', jsonb_array_length(v_preguntas) using errcode = 'P0001';
+  end if;
 
   delete from public.claves where modulo_id = p_modulo;
   insert into public.claves (modulo_id, orden, correcta, retroalimentacion)

@@ -3,59 +3,159 @@
   "numero": 3,
   "titulo": "Formulación de proyectos bajo Metodología General Ajustada – MGA",
   "notaMinima": 70,
-  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntasPorIntento": 8,
+  "nota": "Banco v2 redactado por el equipo de desarrollo a partir de los resultados de aprendizaje. Requiere validación del responsable técnico del módulo.",
   "preguntas": [
     {
-      "id": "m3-p1",
-      "enunciado": "En la cadena de valor de un proyecto, un producto es:",
+      "id": "m3-p01",
+      "enunciado": "En la lógica de la MGA, el objetivo general de un proyecto corresponde a:",
       "opciones": [
-        "Una tarea que ejecuta el equipo",
-        "El bien o servicio entregado que genera el resultado esperado",
-        "El presupuesto asignado",
-        "Un indicador de gestión"
+        "La suma de todas las actividades que se van a contratar durante la ejecución del proyecto",
+        "El valor total del presupuesto distribuido por fuentes de financiación",
+        "La misión institucional de la entidad que ejecutará el proyecto",
+        "El problema central expresado como la situación positiva que se quiere alcanzar"
       ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Relaciona problema, objetivo y alternativa de solución.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m3-p2",
-      "enunciado": "La alternativa de solución se elige:",
+      "id": "m3-p02",
+      "enunciado": "La Metodología General Ajustada (MGA) es:",
       "opciones": [
-        "Antes de analizar el problema",
-        "Después de construir el árbol de objetivos, comparando opciones viables",
-        "Según el monto disponible",
-        "Según la dependencia que formula"
+        "Un fondo nacional que financia proyectos de municipios de categoría sexta",
+        "La herramienta del DNP para formular y presentar proyectos de inversión pública",
+        "Una norma que regula la contratación de proyectos de ciencia y tecnología en el país",
+        "Un programa de contabilidad que usan las entidades territoriales para sus presupuestos"
       ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Relaciona problema, objetivo y alternativa de solución.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m3-p3",
+      "id": "m3-p03",
+      "enunciado": "En la cadena de valor, un producto es:",
+      "opciones": [
+        "El bien o servicio que entrega el proyecto como resultado de sus actividades",
+        "Un insumo que se adquiere para poder ejecutar las actividades del proyecto",
+        "El cambio de largo plazo que se espera en las condiciones de vida de la población",
+        "Una tarea del cronograma que el equipo debe realizar en un plazo definido"
+      ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Construye una cadena de valor coherente.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p04",
+      "enunciado": "¿Cuál es el orden correcto de la cadena de valor?",
+      "opciones": [
+        "Productos → insumos → actividades → impactos → resultados",
+        "Impactos → resultados → actividades → insumos → productos",
+        "Insumos → actividades → productos → resultados → impactos",
+        "Actividades → impactos → insumos → productos → resultados"
+      ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Construye una cadena de valor coherente.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p05",
+      "enunciado": "¿Cuál de las siguientes es una actividad y no un producto?",
+      "opciones": [
+        "Servicio de asistencia técnica a productores agropecuarios prestado",
+        "Sede educativa construida y dotada",
+        "Documento de lineamientos técnicos elaborado",
+        "Realizar talleres de capacitación con los productores"
+      ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Diferencia productos de actividades.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p06",
       "enunciado": "Un indicador básico debe permitir:",
       "opciones": [
-        "Describir la intención del proyecto",
-        "Medir de forma verificable el avance hacia una meta",
-        "Justificar el gasto",
-        "Sustituir el cronograma"
+        "Medir de forma clara y verificable el avance hacia un producto o resultado",
+        "Describir la historia, la misión y la visión de la entidad que ejecuta el proyecto",
+        "Reemplazar el presupuesto cuando todavía no se tiene información de costos",
+        "Justificar el nombre del proyecto ante el comité que lo evalúa"
       ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Formula indicadores y metas básicas.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m3-p4",
-      "enunciado": "La MGA es:",
+      "id": "m3-p07",
+      "enunciado": "¿Cuál de las siguientes es una meta bien formulada?",
       "opciones": [
-        "Un formato de contratación",
-        "La metodología para formular y registrar proyectos de inversión pública",
-        "Un sistema de seguimiento financiero",
-        "Una norma de archivo"
+        "«Mejorar de manera significativa la productividad agropecuaria de la región»",
+        "«Hacer todo lo posible por capacitar a los productores»",
+        "«150 productores con asistencia técnica en 12 meses»",
+        "«Realizar actividades de fortalecimiento institucional»"
       ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Formula indicadores y metas básicas.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p08",
+      "enunciado": "El presupuesto preliminar de un proyecto debe:",
+      "opciones": [
+        "Fijarse primero y luego definir actividades que permitan justificar todo el monto",
+        "Costear cada actividad necesaria para obtener los productos, con valores sustentados",
+        "Incluir únicamente los gastos de personal, porque los demás se definen en la ejecución",
+        "Copiarse de un proyecto anterior de la entidad para ahorrar tiempo en la formulación"
+      ],
+      "resultadoAprendizaje": 5,
+      "resultadoTexto": "Organiza un presupuesto y cronograma preliminar.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p09",
+      "enunciado": "En la formulación de un proyecto, un riesgo es:",
+      "opciones": [
+        "Un problema que ya ocurrió durante la formulación y que no tiene solución posible",
+        "Un evento que podría ocurrir y afectar los objetivos, para el cual se prevén acciones",
+        "Una actividad adicional que se agrega al cronograma por recomendación del supervisor",
+        "Un costo imprevisto que se suma siempre al presupuesto con un porcentaje fijo"
+      ],
+      "resultadoAprendizaje": 6,
+      "resultadoTexto": "Identifica riesgos y acciones de sostenibilidad.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m3-p10",
+      "enunciado": "Revisar la coherencia interna del perfil del proyecto significa verificar que:",
+      "opciones": [
+        "El documento tenga el número de páginas y los anexos que exige la plantilla oficial",
+        "Todas las secciones del perfil usen el mismo formato, tipo de letra y estilo de redacción",
+        "El presupuesto alcance el valor máximo permitido por la fuente de financiación",
+        "Problema, objetivos, productos, actividades, indicadores y presupuesto estén conectados"
+      ],
+      "resultadoAprendizaje": 7,
+      "resultadoTexto": "Verifica la coherencia interna del perfil del proyecto.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     }
-  ]
+  ],
+  "actualizado": "2026-10-20"
 }

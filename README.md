@@ -44,7 +44,7 @@ cuenta de coordinación es una cuenta inscrita a la que se le da el rol `admin` 
 |---|---|
 | raíz | Solo `index.html` (el ingreso) y `404.html`; el resto son archivos de configuración |
 | `paginas/` | Las pantallas internas: inicio, módulo, evaluación, resultado, notas, seguimiento, informe y revisión |
-| `assets/` | Imágenes de marca, infografías y PDF del curso |
+| `assets/` | Imágenes de marca, fichas de los módulos y PDF del curso |
 | `css/` | `base` (colores y tipografía) · `layout` (encabezado, pie) · `componentes` · `vistas` · `graficas` · `reporte` |
 | `js/datos/` | De dónde salen y a dónde van los datos |
 | `js/nucleo/` | Reglas: sesión, avance, calificación y estadísticas |
@@ -92,20 +92,18 @@ La definición de cada indicador está en [`docs/indicadores.md`](docs/indicador
 La plataforma incluye una pantalla propia para la retroalimentación del equipo de CTeI:
 **`revision.html`**, accesible desde el menú del usuario con el perfil de coordinación.
 
-Allí aparecen las once piezas gráficas con su número impreso, el módulo al que quedaron
-asignadas y las inconsistencias detectadas. Cada pieza tiene un campo de decisión y
-observación; el botón **Exportar observaciones** descarga un archivo JSON con lo registrado
-para que el equipo de desarrollo lo aplique sobre `contenido/materiales.json`.
+Allí aparecen las piezas gráficas del curso con el módulo al que están asignadas. Cada pieza
+tiene un campo de decisión y observación; el botón **Exportar observaciones** descarga un
+archivo JSON con lo registrado.
 
-**Inconsistencias abiertas hoy:** siete piezas traen impreso un número de módulo distinto al
-del documento «MÓDULOS DE FORMACIÓN», una misma pieza cubre los módulos 5 y 6, y el módulo 6
-no tiene pieza propia. Ver `contenido/materiales.json`.
+Cada módulo tiene una **ficha de presentación** y una o dos **fichas temáticas**
+(`assets/img/fichas/`, en WebP), con la numeración del documento «MÓDULOS DE FORMACIÓN».
 
 ---
 
 ## Pendientes
 
-- Validar el banco de preguntas con los responsables técnicos de cada módulo
+- Validar el banco de preguntas (10 por módulo, 8 al azar por intento) con los responsables técnicos de cada módulo
   (`contenido/preguntas/*.json`, campo `estado`; las respuestas correctas están en la tabla `claves` de Supabase).
 - Cargar los PDF y audiovisuales de cada módulo en `assets/docs/`.
 - Conseguir el logotipo CTeI y el escudo en vector.

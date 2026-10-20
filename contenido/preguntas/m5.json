@@ -3,59 +3,159 @@
   "numero": 5,
   "titulo": "Convocatorias, fuentes de financiación y preparación de proyectos",
   "notaMinima": 70,
-  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntasPorIntento": 8,
+  "nota": "Banco v2 redactado por el equipo de desarrollo a partir de los resultados de aprendizaje. Requiere validación del responsable técnico del módulo.",
   "preguntas": [
     {
-      "id": "m5-p1",
-      "enunciado": "Un requisito habilitante en una convocatoria es:",
+      "id": "m5-p01",
+      "enunciado": "Una fuente de financiación es compatible con una iniciativa cuando:",
       "opciones": [
-        "Un criterio que otorga puntaje adicional",
-        "Una condición mínima sin la cual la propuesta no pasa a evaluación",
-        "Una recomendación opcional",
-        "El presupuesto máximo"
+        "Ofrece el monto más alto disponible, aunque su objetivo sea diferente",
+        "Su objetivo, lo que financia y sus beneficiarios coinciden con la iniciativa",
+        "Tiene la fecha de cierre más lejana, lo que da más tiempo para preparar la propuesta",
+        "Es la convocatoria más conocida y con más postulantes en el departamento"
       ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Identifica mecanismos y fuentes de financiación compatibles con una iniciativa.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m5-p2",
+      "id": "m5-p02",
+      "enunciado": "¿Cuál de las siguientes es una fuente pública de financiación para proyectos de CTeI en Colombia?",
+      "opciones": [
+        "El presupuesto personal del formulador y de los integrantes del equipo",
+        "El recaudo por multas de tránsito que administra cada municipio",
+        "Un crédito de consumo solicitado en un banco a nombre del representante legal de la entidad",
+        "La asignación para Ciencia, Tecnología e Innovación del Sistema General de Regalías"
+      ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Identifica mecanismos y fuentes de financiación compatibles con una iniciativa.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p03",
+      "enunciado": "Los Términos de Referencia de una convocatoria se leen primero para:",
+      "opciones": [
+        "Conocer el monto máximo que se puede solicitar, que es lo único que define la propuesta",
+        "Copiar sus textos en el formulario para diligenciarlo más rápido",
+        "Conocer el objetivo, quién puede participar, qué se financia y cómo se evalúa",
+        "Identificar quiénes serán los evaluadores y contactarlos antes del cierre"
+      ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Interpreta los elementos básicos de unos Términos de Referencia.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p04",
       "enunciado": "La diferencia entre elegibilidad y pertinencia es que:",
       "opciones": [
-        "Son lo mismo",
-        "La elegibilidad es cumplir las condiciones formales; la pertinencia es que la propuesta responda al objeto de la convocatoria",
-        "La pertinencia la define el proponente",
-        "La elegibilidad depende del puntaje"
+        "La elegibilidad indica si se puede participar; la pertinencia, si se responde al objetivo",
+        "Son el mismo concepto y se usan como sinónimos en los Términos de Referencia",
+        "La pertinencia la define el formulador; la elegibilidad, el número de aliados",
+        "La elegibilidad depende del monto del presupuesto; la pertinencia, de la experiencia del equipo"
       ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Diferencia elegibilidad, pertinencia y preparación.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m5-p3",
-      "enunciado": "Los Términos de Referencia se leen primero para:",
+      "id": "m5-p05",
+      "enunciado": "Un proyecto está preparado para postular cuando:",
       "opciones": [
-        "Conocer el monto",
-        "Identificar objeto, requisitos, criterios de evaluación, cronograma y documentos exigidos",
-        "Redactar el resumen",
-        "Buscar el formato de presupuesto"
+        "Cumple los requisitos y tiene listos los documentos, los aliados y la propuesta",
+        "Se tiene clara la idea general, aunque todavía falten los soportes y los aliados",
+        "Se envió un correo de interés a la entidad que abre la convocatoria",
+        "El formulador ya ha participado en otras convocatorias del mismo financiador"
       ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Diferencia elegibilidad, pertinencia y preparación.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m5-p4",
+      "id": "m5-p06",
+      "enunciado": "Un requisito habilitante en una convocatoria es:",
+      "opciones": [
+        "Un puntaje adicional que se suma a la calificación final de la propuesta",
+        "Una recomendación opcional que mejora la presentación de la propuesta",
+        "Un criterio que se usa solo para desempatar propuestas con igual puntaje",
+        "Una condición mínima que debe cumplirse para que la propuesta sea evaluada"
+      ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Reconoce requisitos habilitantes y criterios de evaluación.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p07",
+      "enunciado": "Los criterios de evaluación de una convocatoria sirven para:",
+      "opciones": [
+        "Definir qué personas pueden consultar los Términos de Referencia de la convocatoria",
+        "Calificar las propuestas que cumplen los requisitos y decidir cuáles se financian",
+        "Reemplazar los requisitos habilitantes cuando una propuesta no los cumple",
+        "Fijar los honorarios que recibirá cada integrante del equipo del proyecto"
+      ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Reconoce requisitos habilitantes y criterios de evaluación.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p08",
+      "enunciado": "¿Cuál de las siguientes puede ser una evidencia de capacidad del equipo proponente?",
+      "opciones": [
+        "Una carta firmada por el representante legal en la que afirma que el equipo es capaz",
+        "El logo y la imagen institucional de la entidad que presenta la propuesta",
+        "Certificaciones de experiencia en proyectos similares y hojas de vida con soportes",
+        "La lista de proyectos que el equipo planea formular en los próximos años"
+      ],
+      "resultadoAprendizaje": 5,
+      "resultadoTexto": "Organiza aliados, documentos y evidencias de capacidad.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p09",
       "enunciado": "Una contrapartida es:",
       "opciones": [
-        "Un descuento sobre el valor del proyecto",
-        "El aporte propio o de aliados que complementa los recursos solicitados",
-        "Una sanción",
-        "El excedente presupuestal"
+        "Una multa que se cobra al proponente cuando incumple los plazos de la convocatoria",
+        "Un descuento que otorga la entidad financiadora a los proyectos mejor calificados",
+        "Un requisito tributario que debe cumplir el proponente antes de firmar el convenio",
+        "El aporte, en dinero o en especie, que hacen el proponente o sus aliados al proyecto"
       ],
+      "resultadoAprendizaje": 5,
+      "resultadoTexto": "Organiza aliados, documentos y evidencias de capacidad.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m5-p10",
+      "enunciado": "Aplicar una lista de preparación antes de postular permite:",
+      "opciones": [
+        "Garantizar que el proyecto será aprobado si se cumplen todos los puntos de la lista",
+        "Evitar la lectura completa de los Términos de Referencia, porque la lista los resume",
+        "Saber qué está listo y qué falta antes de decidir si se postula",
+        "Reemplazar los documentos que exige la convocatoria por una declaración del equipo"
+      ],
+      "resultadoAprendizaje": 6,
+      "resultadoTexto": "Aplica una lista de preparación antes de postular.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     }
-  ]
+  ],
+  "actualizado": "2026-10-20"
 }

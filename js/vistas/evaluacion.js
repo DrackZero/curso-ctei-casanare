@@ -14,7 +14,17 @@ if (u) pintar();
 async function pintar() {
   const c = await contenidos.curso();
   const m = await contenidos.modulo(id);
-  const preguntas = await contenidos.preguntas(id);
+  const doc = await contenidos.documentoPreguntas(id);
+  const banco = doc.preguntas;
+  // Cada intento presenta «preguntasPorIntento» preguntas del banco, al azar y en orden aleatorio.
+  const cuantas = Math.min(banco.length, Number(doc.preguntasPorIntento) || banco.length);
+  const orden = banco.map((_, i) => i);
+  for (let i = orden.length - 1; i > 0; i--) {          // barajado Fisher-Yates
+    const j = Math.floor(Math.random() * (i + 1));
+    [orden[i], orden[j]] = [orden[j], orden[i]];
+  }
+  const elegidas = orden.slice(0, cuantas);
+  const preguntas = elegidas.map(i => banco[i]);
   document.documentElement.style.setProperty('--mod', m.color);
   document.documentElement.style.setProperty('--mod-suave', m.colorSuave);
 
@@ -23,7 +33,7 @@ async function pintar() {
     <div>
       <span class="rotulo">Módulo ${m.numero} · Evaluación calificativa</span>
       <h2>${esc(m.titulo)}</h2>
-      <p>Seleccione una respuesta por pregunta. La nota se calcula sobre ${preguntas.length} preguntas y queda registrada en su historial.</p>
+      <p>Seleccione una respuesta por pregunta. La nota se calcula sobre ${preguntas.length} preguntas y queda registrada en su historial.${cuantas < banco.length ? ' Las preguntas se eligen al azar de un banco de ' + banco.length + ': cada intento puede traer preguntas distintas.' : ''}</p>
     </div>
     <a class="btn btn-linea btn-sm" href="${PAGINAS.modulo}?m=${m.id}">Volver al módulo</a>
   </div>
@@ -52,11 +62,16 @@ async function pintar() {
   f.addEventListener('submit', async ev => {
     ev.preventDefault();
     const err = document.getElementById('quiz-err');
-    const respuestas = [];
+    // Una posición por pregunta del banco: la opción elegida, o -1 si no salió en este intento.
+    const respuestas = banco.map(() => -1);
     for (let i = 0; i < preguntas.length; i++) {
       const sel = f.querySelector('input[name="q' + i + '"]:checked');
-      if (!sel) { err.textContent = 'Falta responder la pregunta ' + (i + 1) + '.'; return; }
-      respuestas.push(Number(sel.value));
+      if (!sel) {
+        err.textContent = 'Falta responder la pregunta ' + (i + 1) + '.';
+        f.querySelector('[data-q="' + i + '"]').scrollIntoView({ block: 'center', behavior: 'smooth' });
+        return;
+      }
+      respuestas[elegidas[i]] = Number(sel.value);
     }
     const boton = f.querySelector('button[type="submit"]');
     boton.disabled = true;

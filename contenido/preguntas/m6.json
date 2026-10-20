@@ -3,59 +3,159 @@
   "numero": 6,
   "titulo": "Seguimiento, evidencias, sostenibilidad y cierre del proyecto",
   "notaMinima": 70,
-  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntasPorIntento": 8,
+  "nota": "Banco v2 redactado por el equipo de desarrollo a partir de los resultados de aprendizaje. Requiere validación del responsable técnico del módulo.",
   "preguntas": [
     {
-      "id": "m6-p1",
+      "id": "m6-p01",
       "enunciado": "La diferencia entre avance físico y avance financiero es que:",
       "opciones": [
-        "Son equivalentes",
-        "El físico mide productos y metas ejecutadas; el financiero mide recursos comprometidos y pagados",
-        "El financiero mide productos",
-        "El físico mide el tiempo transcurrido"
+        "Son el mismo indicador expresado en porcentajes diferentes según quien lo reporte",
+        "El financiero se mide en unidades de obra; el físico, en pesos ejecutados",
+        "El físico solo aplica a obras de infraestructura; el financiero, a todos los proyectos",
+        "El físico mide lo ejecutado; el financiero, los recursos comprometidos o pagados"
       ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Diferencia avance físico y avance financiero.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m6-p2",
+      "id": "m6-p02",
+      "enunciado": "Un proyecto reporta 80 % de avance financiero y 30 % de avance físico. Esto indica:",
+      "opciones": [
+        "Una alerta: se han usado muchos recursos con poco avance real",
+        "Que el proyecto va adelantado y podría terminar antes de lo previsto",
+        "Que la ejecución es normal, porque el dinero siempre se gasta antes que las obras",
+        "Que el proyecto ya cumplió sus metas y puede iniciar el proceso de cierre"
+      ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Diferencia avance físico y avance financiero.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p03",
       "enunciado": "Una fuente de verificación es:",
       "opciones": [
-        "El indicador mismo",
-        "El documento o registro que demuestra el valor reportado del indicador",
-        "La meta del proyecto",
-        "El responsable del seguimiento"
+        "El nombre y el cargo del supervisor encargado de vigilar el cumplimiento del contrato",
+        "La opinión general del equipo sobre el desarrollo del proyecto",
+        "El documento o registro que demuestra el cumplimiento de un indicador",
+        "El objetivo general del proyecto redactado en la ficha técnica"
       ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Relaciona indicadores, metas y fuentes de verificación.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m6-p3",
+      "id": "m6-p04",
+      "enunciado": "Si la meta es «100 productores con asistencia técnica», una buena fuente de verificación sería:",
+      "opciones": [
+        "Un comunicado de prensa que anuncia el inicio de las visitas técnicas",
+        "Las planillas de asistencia firmadas y los informes de cada visita técnica",
+        "La resolución con la que se aprobó el proyecto y se asignaron los recursos",
+        "El plan anual de adquisiciones de la entidad publicado en el SECOP"
+      ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Relaciona indicadores, metas y fuentes de verificación.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p05",
+      "enunciado": "La trazabilidad de las evidencias significa que:",
+      "opciones": [
+        "Todas las evidencias se guardan juntas en una sola carpeta compartida",
+        "Solo se conservan las fotografías porque son la prueba más fácil de revisar",
+        "Cada evidencia se puede relacionar con su actividad, su producto y su fecha",
+        "Las evidencias se eliminan al cerrar el proyecto para proteger la información"
+      ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Organiza evidencias de ejecución y trazabilidad.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p06",
+      "enunciado": "Una desviación en la ejecución de un proyecto es:",
+      "opciones": [
+        "La diferencia entre lo planeado y lo ejecutado en tiempo, costo o resultados",
+        "Un cambio en el nombre del proyecto aprobado por el comité técnico",
+        "La aprobación de una prórroga solicitada por el contratista y avalada por el supervisor",
+        "La publicación del informe final en la página web de la entidad"
+      ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Identifica alertas, riesgos y desviaciones.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p07",
+      "enunciado": "Además de informar el avance, el seguimiento sirve para:",
+      "opciones": [
+        "Cumplir con el informe que exige el financiador, que es su única utilidad",
+        "Identificar a los responsables cuando algo falla para aplicar sanciones",
+        "Hacer más completos los informes con información adicional",
+        "Aprender de lo que funciona y de lo que no, y ajustar a tiempo"
+      ],
+      "resultadoAprendizaje": 5,
+      "resultadoTexto": "Reconoce el seguimiento como fuente de aprendizaje y toma de decisiones.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p08",
       "enunciado": "La sostenibilidad de un proyecto se refiere a:",
       "opciones": [
-        "Terminarlo dentro del plazo",
-        "Que los resultados permanezcan en el territorio después de finalizada la financiación",
-        "Reducir el presupuesto",
-        "Usar energías limpias únicamente"
+        "Que el proyecto se mantenga en ejecución durante el mayor tiempo posible",
+        "La capacidad de mantener los beneficios después de que termina la financiación",
+        "Que utilice únicamente materiales reciclados o de bajo impacto ambiental en todas sus obras",
+        "Que se repita cada año con el mismo presupuesto y las mismas actividades"
       ],
+      "resultadoAprendizaje": 6,
+      "resultadoTexto": "Formula acciones de sostenibilidad.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m6-p4",
-      "enunciado": "Las lecciones aprendidas sirven para:",
+      "id": "m6-p09",
+      "enunciado": "¿Cuál de las siguientes es una acción de sostenibilidad?",
       "opciones": [
-        "Cumplir un formato de cierre",
-        "Mejorar la formulación y ejecución de iniciativas futuras",
-        "Justificar desviaciones",
-        "Evaluar al equipo"
+        "Ejecutar todo el presupuesto antes de la fecha de cierre para no devolver recursos",
+        "Acordar quién asumirá la operación y el mantenimiento cuando termine el proyecto",
+        "Entregar el informe final antes de tiempo para liberar al equipo",
+        "Rotar el equipo del proyecto cada mes para que más personas aprendan"
       ],
+      "resultadoAprendizaje": 6,
+      "resultadoTexto": "Formula acciones de sostenibilidad.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m6-p10",
+      "enunciado": "La Ficha Básica Final de Proyecto reúne:",
+      "opciones": [
+        "Únicamente el presupuesto detallado del proyecto y sus fuentes de financiación",
+        "Las calificaciones que obtuvo el participante en las evaluaciones del curso",
+        "Los productos de los seis módulos, integrados en una iniciativa preliminar de proyecto",
+        "Los datos personales de los beneficiarios y los soportes de su caracterización"
+      ],
+      "resultadoAprendizaje": 7,
+      "resultadoTexto": "Consolida la Ficha Básica Final de Proyecto de Innovación Pública o CTeI.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     }
-  ]
+  ],
+  "actualizado": "2026-10-20"
 }

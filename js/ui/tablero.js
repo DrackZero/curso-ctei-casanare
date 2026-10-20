@@ -132,11 +132,10 @@ export function graficaDistribucion(r) {
   const umbral = r.curso.notaMinima;
   const d = r.distribucion;
   const total = d.reduce((s, x) => s + x.cuenta, 0) || 1;
-  const nPreg = 4;
   const corte = d.findIndex(x => x.aprueba) - 1;
   const filas = d.map(x => ({
     etiqueta: x.clase,
-    sub: x.desde === x.hasta ? `${Math.round(x.desde / 100 * nPreg)}/${nPreg} aciertos` : '',
+    sub: x.n ? `${x.aciertos}/${x.n} aciertos` : '',
     valor: x.cuenta,
     color: x.aprueba ? 'var(--graf-serie)' : 'var(--graf-atenuado)',
     tip: `Nota ${x.clase}: ${x.cuenta} intentos (${fmt(Math.round(x.cuenta / total * 100), '%')})`

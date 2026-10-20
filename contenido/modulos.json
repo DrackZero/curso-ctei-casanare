@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-09-14",
+  "actualizado": "2026-10-20",
   "fuente": "Documento «MÓDULOS DE FORMACIÓN» — Gobernación de Casanare",
   "modulos": [
     {
@@ -14,15 +14,15 @@
       "publicado": true,
       "infografias": [
         {
-          "material": "inf-ip-que-es",
+          "material": "ficha-m1",
+          "titulo": "Ficha del módulo 1"
+        },
+        {
+          "material": "tematica-m1a",
           "titulo": "¿Qué es la innovación pública?"
         },
         {
-          "material": "inf-ip-principios",
-          "titulo": "Principios de la innovación pública"
-        },
-        {
-          "material": "inf-ip-valor",
+          "material": "tematica-m1b",
           "titulo": "Innovación pública y generación de valor público"
         }
       ],
@@ -66,12 +66,12 @@
       "publicado": true,
       "infografias": [
         {
-          "material": "inf-ciclo-formulacion",
-          "titulo": "Del problema a la solución: el ciclo de formulación"
+          "material": "ficha-m2",
+          "titulo": "Ficha del módulo 2"
         },
         {
-          "material": "inf-arbol-objetivos",
-          "titulo": "Del problema a la solución: árbol de objetivos"
+          "material": "tematica-m2",
+          "titulo": "Del problema a la solución: el ciclo de formulación y el árbol de objetivos"
         }
       ],
       "proposito": "Transformar una necesidad u oportunidad general en un problema público o territorial claramente delimitado, sustentado con evidencia y analizado mediante causas, efectos, población, actores y objetivos.",
@@ -118,7 +118,11 @@
       "publicado": true,
       "infografias": [
         {
-          "material": "inf-mga",
+          "material": "ficha-m3",
+          "titulo": "Ficha del módulo 3"
+        },
+        {
+          "material": "tematica-m3",
           "titulo": "Del problema al proyecto: la ruta MGA"
         }
       ],
@@ -168,15 +172,15 @@
       "publicado": true,
       "infografias": [
         {
-          "material": "inf-sncti",
-          "titulo": "¿Qué es el Sistema Nacional de CTeI?"
+          "material": "ficha-m4",
+          "titulo": "Ficha del módulo 4"
         },
         {
-          "material": "inf-actores",
-          "titulo": "Los actores del ecosistema CTeI: quíntuple hélice"
+          "material": "tematica-m4a",
+          "titulo": "El Sistema Nacional de CTeI y sus actores"
         },
         {
-          "material": "inf-proyecto-ctei",
+          "material": "tematica-m4b",
           "titulo": "Cuando una idea se convierte en innovación"
         }
       ],
@@ -227,7 +231,11 @@
       "publicado": true,
       "infografias": [
         {
-          "material": "inf-convocatorias",
+          "material": "ficha-m5",
+          "titulo": "Ficha del módulo 5"
+        },
+        {
+          "material": "tematica-m5",
           "titulo": "Del proyecto a la oportunidad: la ruta para preparar tu proyecto"
         }
       ],
@@ -277,8 +285,12 @@
       "publicado": true,
       "infografias": [
         {
-          "material": "inf-convocatorias",
-          "titulo": "Del proyecto a la oportunidad: seguimiento, evidencias y sostenibilidad"
+          "material": "ficha-m6",
+          "titulo": "Ficha del módulo 6"
+        },
+        {
+          "material": "tematica-m6",
+          "titulo": "Seguimiento, evidencias y sostenibilidad"
         }
       ],
       "proposito": "Comprender la gestión del proyecto durante su ejecución y cierre, integrando seguimiento físico y financiero, indicadores, evidencias, riesgos, aprendizaje y sostenibilidad, y consolidar los productos de los módulos anteriores en una ficha final.",

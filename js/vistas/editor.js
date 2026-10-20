@@ -143,8 +143,12 @@ function pintarPreguntas() {
   const c = document.getElementById('ed-cuerpo');
   c.innerHTML = `
   <div class="ed-barra">${selectorModulo()}
-    <span class="pista">${doc.preguntas.length} ${doc.preguntas.length === 1 ? 'pregunta' : 'preguntas'} · la respuesta correcta nunca se envía a los participantes antes de calificar</span>
+    <label class="ed-selector">Preguntas por intento
+      <input type="number" id="ed-por-intento" min="1" max="${doc.preguntas.length}" value="${Math.min(doc.preguntas.length, Number(doc.preguntasPorIntento) || doc.preguntas.length)}" style="width:5rem">
+      <span class="pista">de ${doc.preguntas.length} en el banco · se eligen al azar</span>
+    </label>
   </div>
+  <p class="pista" style="margin:-.4rem 0 1rem">La respuesta correcta nunca se envía a los participantes antes de calificar.</p>
   ${doc.preguntas.map((q, i) => `
   <section class="panel ed-tarjeta">
     <div class="panel-cab">
@@ -183,6 +187,10 @@ function pintarPreguntas() {
 
   conectarSelectorModulo(async () => { await cargarPreguntas(); pintarPreguntas(); });
   enlazar(c, doc);
+  document.getElementById('ed-por-intento').addEventListener('input', e => {
+    doc.preguntasPorIntento = Number(e.target.value) || doc.preguntas.length;
+    marcarSucio();
+  });
 
   const rehacer = f => () => { f(); marcarSucio(); pintarPreguntas(); };
   c.querySelectorAll('[data-correcta]').forEach(r => r.addEventListener('change', rehacer(() => {
@@ -214,6 +222,11 @@ function pintarPreguntas() {
   document.getElementById('ed-guardar').addEventListener('click', e => conBoton(e.currentTarget, async () => {
     const problema = revisarPreguntas(doc.preguntas);
     if (problema) { alert(problema); return; }
+    const por = Number(doc.preguntasPorIntento) || doc.preguntas.length;
+    if (por < 1 || por > doc.preguntas.length) {
+      alert(`«Preguntas por intento» debe estar entre 1 y ${doc.preguntas.length}.`); return;
+    }
+    doc.preguntasPorIntento = por;
     doc.preguntas.forEach(q => { q.enunciado = q.enunciado.trim(); q.opciones = q.opciones.map(o => o.trim()); });
     doc.actualizado = new Date().toISOString().slice(0, 10);
     const r = await almacen.guardarPreguntas(estado.modulo, doc);

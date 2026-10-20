@@ -54,10 +54,10 @@ async function pintar() {
     </div>
   </section>
   <section class="quiz">
-    ${preguntas.map((q, i) => {
+    ${preguntas.map((q, i) => ({ q, i })).filter(({ i }) => r.respuestas[i] >= 0).map(({ q, i }, n) => {
       const elegida = r.respuestas[i];
       return `<div class="q">
-        <span class="qn">PREGUNTA ${i + 1}</span>
+        <span class="qn">PREGUNTA ${n + 1}</span>
         <h4>${esc(q.enunciado)}</h4>
         <div class="ops">${q.opciones.map((op, j) => {
           let cls = 'op';

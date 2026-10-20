@@ -3,59 +3,159 @@
   "numero": 2,
   "titulo": "Problemas públicos, retos territoriales y diagnóstico basado en evidencia",
   "notaMinima": 70,
-  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntasPorIntento": 8,
+  "nota": "Banco v2 redactado por el equipo de desarrollo a partir de los resultados de aprendizaje. Requiere validación del responsable técnico del módulo.",
   "preguntas": [
     {
-      "id": "m2-p1",
+      "id": "m2-p01",
+      "enunciado": "¿Cuál de las siguientes frases expresa una solución y no un problema?",
+      "opciones": [
+        "«Los productores pierden parte de la cosecha por falta de almacenamiento adecuado»",
+        "«Construir un centro de acopio en el municipio»",
+        "«La deserción escolar rural aumentó en los últimos tres años»",
+        "«Los tiempos de espera en el puesto de salud superan las cuatro horas»"
+      ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Diferencia necesidad, problema y solución.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p02",
       "enunciado": "Un problema central bien formulado se redacta como:",
       "opciones": [
-        "La ausencia de una solución específica",
-        "Una situación negativa existente",
-        "La falta de presupuesto",
-        "Un objetivo por alcanzar"
+        "La ausencia de una solución concreta, por ejemplo «falta un puente en la vereda»",
+        "El objetivo que el proyecto quiere alcanzar al finalizar su ejecución",
+        "La lista de actividades que se necesitan para resolver la necesidad",
+        "Una situación negativa que existe hoy y afecta a una población"
       ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Formula un problema central como situación negativa existente.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m2-p2",
-      "enunciado": "En el árbol de problemas, las raíces representan:",
+      "id": "m2-p03",
+      "enunciado": "¿Cuál es el problema central mejor formulado?",
       "opciones": [
-        "Los efectos",
-        "Las causas",
-        "La población objetivo",
-        "Los indicadores"
+        "«Alta incidencia de enfermedades gastrointestinales en niños de la vereda El Progreso»",
+        "«Falta de un acueducto que abastezca de agua potable a la vereda El Progreso»",
+        "«Construir una planta de tratamiento de agua potable en la vereda El Progreso»",
+        "«Mejorar las condiciones de salud de los niños de la vereda El Progreso»"
       ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Formula un problema central como situación negativa existente.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m2-p3",
-      "enunciado": "El árbol de objetivos se obtiene:",
-      "opciones": [
-        "Convirtiendo el problema y sus causas en situaciones positivas alcanzables",
-        "Enumerando las actividades del proyecto",
-        "Copiando los objetivos del plan de desarrollo",
-        "Definiendo el presupuesto"
-      ],
-      "estado": "por-validar",
-      "validadoPor": "",
-      "observacion": ""
-    },
-    {
-      "id": "m2-p4",
+      "id": "m2-p04",
       "enunciado": "La evidencia dentro del diagnóstico sirve para:",
       "opciones": [
-        "Alargar el documento",
-        "Demostrar que el problema existe, a quién afecta y con qué magnitud",
-        "Justificar el presupuesto ya asignado",
-        "Reemplazar el árbol de problemas"
+        "Dar más extensión y formalidad al documento técnico del proyecto",
+        "Reemplazar el árbol de problemas cuando no se cuenta con tiempo suficiente",
+        "Demostrar con datos verificables que el problema existe y cuál es su magnitud",
+        "Respaldar la solución que el equipo ya había decidido antes del diagnóstico"
       ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Identifica evidencia pertinente para sustentar el problema.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p05",
+      "enunciado": "¿Cuál es la fuente más adecuada para sustentar la magnitud de un problema?",
+      "opciones": [
+        "Datos oficiales y verificables, como estadísticas del DANE o registros de la entidad",
+        "El testimonio de un líder comunitario que conoce bien la situación de la vereda",
+        "Una publicación ampliamente compartida en redes sociales sobre la situación",
+        "Una cifra aproximada calculada por el equipo, sin indicar de dónde proviene"
+      ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Identifica evidencia pertinente para sustentar el problema.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p06",
+      "enunciado": "En el árbol de problemas, las raíces representan:",
+      "opciones": [
+        "Los efectos o consecuencias que genera el problema",
+        "Las causas que originan el problema central",
+        "Los objetivos específicos del proyecto",
+        "Las actividades que se financiarán con el presupuesto"
+      ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Analiza causas y efectos mediante árbol de problemas.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p07",
+      "enunciado": "En un árbol de problemas, «disminución de los ingresos de las familias productoras», ubicado en las ramas, es:",
+      "opciones": [
+        "Una causa directa del problema central",
+        "El objetivo general del proyecto",
+        "Una causa indirecta que origina el problema central",
+        "Un efecto o consecuencia del problema central"
+      ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Analiza causas y efectos mediante árbol de problemas.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p08",
+      "enunciado": "Delimitar la población afectada significa:",
+      "opciones": [
+        "Incluir a toda la población del departamento para lograr un mayor impacto",
+        "Definir los funcionarios y contratistas que ejecutarán el proyecto",
+        "Precisar quiénes y cuántas personas sufren el problema, y dónde están",
+        "Seleccionar a las personas que participarán en la formulación del proyecto"
+      ],
+      "resultadoAprendizaje": 5,
+      "resultadoTexto": "Delimita población y territorio afectados.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p09",
+      "enunciado": "El árbol de objetivos se obtiene:",
+      "opciones": [
+        "Tomando como referencia los objetivos de un proyecto similar que ya fue aprobado en otra entidad",
+        "Ordenando las actividades del presupuesto de mayor a menor costo",
+        "Eliminando del árbol de problemas las causas que no cuenten con evidencia suficiente",
+        "Convirtiendo cada situación negativa del árbol de problemas en una situación positiva"
+      ],
+      "resultadoAprendizaje": 6,
+      "resultadoTexto": "Construye árbol de objetivos y formula un reto territorial.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m2-p10",
+      "enunciado": "Es recomendable explorar varias alternativas preliminares de solución porque:",
+      "opciones": [
+        "Permite comparar opciones y elegir la más pertinente, no solo la primera idea",
+        "Las convocatorias exigen presentar al menos tres alternativas totalmente formuladas",
+        "Así se puede omitir el diagnóstico y avanzar más rápido en la formulación",
+        "Todas las alternativas identificadas se ejecutan al mismo tiempo en el proyecto"
+      ],
+      "resultadoAprendizaje": 7,
+      "resultadoTexto": "Explora alternativas preliminares sin anticipar una única solución.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     }
-  ]
+  ],
+  "actualizado": "2026-10-20"
 }

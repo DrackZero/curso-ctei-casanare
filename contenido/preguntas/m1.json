@@ -3,59 +3,159 @@
   "numero": 1,
   "titulo": "Gestión del conocimiento, innovación pública y valor público",
   "notaMinima": 70,
-  "nota": "Preguntas redactadas por el equipo de desarrollo a partir de los resultados de aprendizaje. Requieren validación del responsable técnico del módulo.",
+  "preguntasPorIntento": 8,
+  "nota": "Banco v2 redactado por el equipo de desarrollo a partir de los resultados de aprendizaje. Requiere validación del responsable técnico del módulo.",
   "preguntas": [
     {
-      "id": "m1-p1",
+      "id": "m1-p01",
+      "enunciado": "¿En qué consiste la gestión del conocimiento en una entidad pública?",
+      "opciones": [
+        "Guardar todos los documentos de la entidad en un archivo central organizado por fechas y dependencias",
+        "Contratar capacitaciones externas para que los funcionarios actualicen sus conocimientos",
+        "Identificar, compartir y usar el conocimiento disponible para decidir y mejorar la gestión",
+        "Implementar un software de gestión documental que reemplace los archivos en papel"
+      ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Explica qué es la gestión del conocimiento y su importancia para la gestión pública territorial.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p02",
+      "enunciado": "La gestión del conocimiento es importante para la gestión pública territorial porque:",
+      "opciones": [
+        "Evita que se pierdan aprendizajes cuando cambian los equipos o las administraciones",
+        "Permite que cada administración empiece sus proyectos desde cero, sin depender de las anteriores",
+        "Asegura que los proyectos formulados por la entidad sean aprobados en las convocatorias",
+        "Reemplaza la planeación, porque las decisiones se toman con base en la experiencia acumulada"
+      ],
+      "resultadoAprendizaje": 1,
+      "resultadoTexto": "Explica qué es la gestión del conocimiento y su importancia para la gestión pública territorial.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p03",
       "enunciado": "¿Qué diferencia el conocimiento tácito del explícito?",
       "opciones": [
-        "El tácito está documentado y el explícito no",
-        "El tácito reside en la experiencia de las personas y el explícito está documentado y es transferible",
-        "Son sinónimos",
-        "El explícito solo existe en medios digitales"
+        "El tácito está documentado en manuales; el explícito se transmite de forma oral",
+        "El explícito solo existe en medios digitales; el tácito, en documentos impresos",
+        "Son el mismo conocimiento, pero el tácito se usa en el sector privado",
+        "El tácito está en la experiencia de las personas; el explícito está documentado"
       ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Diferencia conocimiento tácito y explícito.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m1-p2",
+      "id": "m1-p04",
+      "enunciado": "¿Cuál de los siguientes es un ejemplo de conocimiento tácito?",
+      "opciones": [
+        "El manual de procedimientos publicado en la página web de la entidad",
+        "Lo que sabe un funcionario sobre cómo destrabar los trámites que suelen demorarse",
+        "El informe de gestión anual que la Gobernación presenta a la Asamblea",
+        "La base de datos con los beneficiarios de los programas sociales del departamento"
+      ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Diferencia conocimiento tácito y explícito.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p05",
+      "enunciado": "¿Cuál es una buena forma de convertir conocimiento tácito en explícito?",
+      "opciones": [
+        "Pedir a los funcionarios con experiencia que resuelvan personalmente cada caso nuevo",
+        "Documentar lecciones aprendidas en guías o fichas que otros puedan consultar",
+        "Limitar el intercambio de información entre dependencias para proteger los datos",
+        "Contratar personal nuevo que reemplace a quienes tienen más experiencia"
+      ],
+      "resultadoAprendizaje": 2,
+      "resultadoTexto": "Diferencia conocimiento tácito y explícito.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p06",
       "enunciado": "La innovación pública se entiende como:",
       "opciones": [
-        "La compra de tecnología para la entidad",
-        "Un proceso de mejora, adaptación o creación de soluciones que generan valor público",
-        "Un trámite administrativo",
-        "Una estrategia de comunicaciones"
+        "La incorporación de tecnología digital en todos los trámites y servicios de la entidad",
+        "Un procedimiento administrativo para aprobar proyectos nuevos en la entidad",
+        "Una estrategia de comunicaciones para mejorar la imagen institucional ante la ciudadanía",
+        "Un proceso de mejora, adaptación o creación de soluciones que generan valor público"
       ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Reconoce la innovación pública como proceso de mejora, adaptación o creación de soluciones.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m1-p3",
+      "id": "m1-p07",
+      "enunciado": "¿Cuál de estas situaciones es un ejemplo de innovación pública por adaptación?",
+      "opciones": [
+        "Ajustar a un municipio de Casanare una solución que ya funcionó en otro territorio",
+        "Mantener el mismo procedimiento sin cambios porque ha funcionado durante años",
+        "Comprar equipos de cómputo nuevos para todas las dependencias de la alcaldía",
+        "Copiar textualmente el plan de desarrollo de otro departamento sin revisarlo"
+      ],
+      "resultadoAprendizaje": 3,
+      "resultadoTexto": "Reconoce la innovación pública como proceso de mejora, adaptación o creación de soluciones.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p08",
       "enunciado": "El valor público se refiere a:",
       "opciones": [
-        "El presupuesto ejecutado por la entidad",
-        "El beneficio real y percibido que obtienen las personas como resultado de la gestión pública",
-        "El número de contratos firmados",
-        "El valor comercial de un servicio"
+        "El porcentaje del presupuesto que la entidad logra ejecutar durante la vigencia",
+        "El número de contratos y convenios firmados por la administración en el año",
+        "El beneficio real que reciben las personas como resultado de la gestión pública",
+        "El precio que tendría un servicio público si se vendiera en el mercado"
       ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Relaciona conocimiento, innovación y valor público.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     },
     {
-      "id": "m1-p4",
+      "id": "m1-p09",
+      "enunciado": "¿Cómo se relacionan el conocimiento, la innovación y el valor público?",
+      "opciones": [
+        "Son conceptos independientes que se trabajan en momentos distintos de la gestión",
+        "El valor público se mide por la cantidad de dinero invertida en proyectos de innovación",
+        "La innovación permite prescindir del conocimiento previo de la entidad y del territorio",
+        "El conocimiento alimenta soluciones innovadoras que generan valor público para las personas"
+      ],
+      "resultadoAprendizaje": 4,
+      "resultadoTexto": "Relaciona conocimiento, innovación y valor público.",
+      "estado": "por-validar",
+      "validadoPor": "",
+      "observacion": ""
+    },
+    {
+      "id": "m1-p10",
       "enunciado": "Una oportunidad de innovación territorial surge cuando:",
       "opciones": [
-        "Existe una situación susceptible de mejora con conocimiento y actores disponibles",
-        "Hay recursos sin ejecutar",
-        "Se aprueba una nueva norma",
-        "Se contrata un consultor"
+        "Hay una situación que se puede mejorar y existen conocimiento y actores para abordarla",
+        "Quedan recursos sin ejecutar al final de la vigencia y es necesario invertirlos",
+        "Se expide una nueva norma nacional que obliga a la entidad a modernizarse",
+        "Un consultor externo recomienda implementar una herramienta tecnológica"
       ],
+      "resultadoAprendizaje": 5,
+      "resultadoTexto": "Identifica una oportunidad de innovación aplicable a una situación real.",
       "estado": "por-validar",
       "validadoPor": "",
       "observacion": ""
     }
-  ]
+  ],
+  "actualizado": "2026-10-20"
 }
