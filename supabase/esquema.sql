@@ -134,7 +134,17 @@ create policy claves_leer_admin on public.claves
   using (privado.es_admin());
 
 revoke all on public.claves from anon, authenticated;
-grant select on public.claves to authenticated;
+-- La coordinación edita las respuestas a través de guardar_preguntas(); nadie más escribe.
+drop policy if exists claves_escribir_admin on public.claves;
+create policy claves_escribir_admin on public.claves
+  for insert to authenticated
+  with check (privado.es_admin());
+drop policy if exists claves_borrar_admin on public.claves;
+create policy claves_borrar_admin on public.claves
+  for delete to authenticated
+  using (privado.es_admin());
+
+grant select, insert, delete on public.claves to authenticated;
 
 -- ------------------------------------------------------------------ intentos
 create table if not exists public.intentos (
@@ -320,9 +330,11 @@ grant select on public.contenido_historial to authenticated;
 
 -- Guarda el banco de preguntas de un módulo: el texto público va a 'contenido' y las
 -- respuestas correctas a 'claves', en una sola operación. Solo la coordinación.
+-- SECURITY INVOKER: se ejecuta con los permisos de quien la llama, así que solo funciona
+-- para la coordinación, que es la única con permiso de escritura (RLS) en claves y contenido.
 create or replace function public.guardar_preguntas(p_modulo text, p_documento jsonb)
 returns void
-language plpgsql security definer set search_path = ''
+language plpgsql security invoker set search_path = ''
 as $$
 declare
   v_preguntas jsonb := p_documento->'preguntas';
