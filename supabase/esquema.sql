@@ -25,12 +25,21 @@ create table if not exists public.perfiles (
 alter table public.perfiles enable row level security;
 
 -- ¿El usuario de la petición es coordinación? SECURITY DEFINER evita recursión en RLS.
-create or replace function public.es_admin()
+-- Vive en el esquema «privado», que la API de Supabase no publica: las políticas la usan
+-- por dentro, pero nadie puede llamarla desde internet (/rest/v1/rpc).
+create schema if not exists privado;
+revoke all on schema privado from public, anon;
+grant usage on schema privado to authenticated;
+
+create or replace function privado.es_admin()
 returns boolean
 language sql stable security definer set search_path = ''
 as $$
   select exists (select 1 from public.perfiles where id = auth.uid() and rol = 'admin');
 $$;
+
+revoke all on function privado.es_admin() from public, anon;
+grant execute on function privado.es_admin() to authenticated;
 
 -- Crea el perfil al registrarse. El rol se fija aquí, nunca desde el cliente.
 create or replace function public.crear_perfil()
@@ -67,7 +76,7 @@ on conflict (id) do nothing;
 drop policy if exists perfiles_leer on public.perfiles;
 create policy perfiles_leer on public.perfiles
   for select to authenticated
-  using (id = auth.uid() or public.es_admin());
+  using (id = auth.uid() or privado.es_admin());
 
 drop policy if exists perfiles_editar_propio on public.perfiles;
 create policy perfiles_editar_propio on public.perfiles
@@ -93,7 +102,7 @@ alter table public.progreso enable row level security;
 drop policy if exists progreso_leer on public.progreso;
 create policy progreso_leer on public.progreso
   for select to authenticated
-  using (usuario_id = auth.uid() or public.es_admin());
+  using (usuario_id = auth.uid() or privado.es_admin());
 
 drop policy if exists progreso_marcar on public.progreso;
 create policy progreso_marcar on public.progreso
@@ -122,7 +131,7 @@ alter table public.claves enable row level security;
 drop policy if exists claves_leer_admin on public.claves;
 create policy claves_leer_admin on public.claves
   for select to authenticated
-  using (public.es_admin());
+  using (privado.es_admin());
 
 revoke all on public.claves from anon, authenticated;
 grant select on public.claves to authenticated;
@@ -145,7 +154,7 @@ alter table public.intentos enable row level security;
 drop policy if exists intentos_leer on public.intentos;
 create policy intentos_leer on public.intentos
   for select to authenticated
-  using (usuario_id = auth.uid() or public.es_admin());
+  using (usuario_id = auth.uid() or privado.es_admin());
 
 -- Sin políticas de INSERT/UPDATE/DELETE: los intentos solo se crean con presentar_evaluacion().
 revoke all on public.intentos from anon, authenticated;
@@ -170,7 +179,7 @@ declare
   v_correctas  int := 0;
   v_nota       int;
   v_id         uuid;
-  v_prueba     boolean := public.es_admin();   -- la coordinación presenta en modo prueba: no se guarda
+  v_prueba     boolean := privado.es_admin();   -- la coordinación presenta en modo prueba: no se guarda
   v_ver_claves int[] := '{}';
   v_ver_retro  text[] := '{}';
   i            int;
@@ -295,14 +304,14 @@ alter table public.contenido_historial enable row level security;
 drop policy if exists contenido_leer on public.contenido;
 create policy contenido_leer on public.contenido for select to anon, authenticated using (true);
 drop policy if exists contenido_crear on public.contenido;
-create policy contenido_crear on public.contenido for insert to authenticated with check (public.es_admin());
+create policy contenido_crear on public.contenido for insert to authenticated with check (privado.es_admin());
 drop policy if exists contenido_editar on public.contenido;
-create policy contenido_editar on public.contenido for update to authenticated using (public.es_admin()) with check (public.es_admin());
+create policy contenido_editar on public.contenido for update to authenticated using (privado.es_admin()) with check (privado.es_admin());
 drop policy if exists contenido_borrar on public.contenido;
-create policy contenido_borrar on public.contenido for delete to authenticated using (public.es_admin());
+create policy contenido_borrar on public.contenido for delete to authenticated using (privado.es_admin());
 
 drop policy if exists historial_leer on public.contenido_historial;
-create policy historial_leer on public.contenido_historial for select to authenticated using (public.es_admin());
+create policy historial_leer on public.contenido_historial for select to authenticated using (privado.es_admin());
 
 revoke all on public.contenido, public.contenido_historial from anon, authenticated;
 grant select on public.contenido to anon, authenticated;
@@ -322,7 +331,7 @@ declare
   v_n         int;
   v_correcta  int;
 begin
-  if not public.es_admin() then
+  if not privado.es_admin() then
     raise exception 'Solo la coordinación puede editar preguntas' using errcode = '42501';
   end if;
   if p_modulo !~ '^m[0-9]{1,2}$' then
@@ -380,10 +389,13 @@ on conflict (id) do update
 
 drop policy if exists materiales_subir on storage.objects;
 create policy materiales_subir on storage.objects for insert to authenticated
-  with check (bucket_id = 'materiales' and public.es_admin());
+  with check (bucket_id = 'materiales' and privado.es_admin());
 drop policy if exists materiales_reemplazar on storage.objects;
 create policy materiales_reemplazar on storage.objects for update to authenticated
-  using (bucket_id = 'materiales' and public.es_admin());
+  using (bucket_id = 'materiales' and privado.es_admin());
 drop policy if exists materiales_borrar on storage.objects;
 create policy materiales_borrar on storage.objects for delete to authenticated
-  using (bucket_id = 'materiales' and public.es_admin());
+  using (bucket_id = 'materiales' and privado.es_admin());
+
+-- Versión anterior de es_admin() en el esquema público: ya ninguna política la usa.
+drop function if exists public.es_admin();
