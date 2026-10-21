@@ -129,7 +129,10 @@ html:has(.acceso){scrollbar-gutter:stable}
 .miniaturas button[aria-current="true"]{border-color:var(--mod)}
 .miniaturas img{width:100%;height:100%;object-fit:cover;display:block}
 
-.lupa{position:fixed;inset:0;background:rgba(255,255,255,.97);z-index:80;display:flex;align-items:center;justify-content:center;padding:1.5rem;overflow:auto}
+.lupa{position:fixed;inset:0;background:rgba(255,255,255,.97);z-index:80;display:flex;align-items:flex-start;justify-content:center;padding:1.5rem;overflow:auto;overscroll-behavior:contain}
+.lupa img{margin:auto}
+/* con el visor abierto, la página de fondo no se desplaza: una sola barra */
+html.lupa-abierta,html.lupa-abierta body{overflow:hidden}
 .lupa img{max-width:min(1100px,100%);height:auto;border-radius:6px;background:#fff;border:1px solid var(--line);box-shadow:var(--sombra)}
 .lupa .cerrar{position:fixed;top:1rem;right:1rem;background:var(--gob);color:#fff;border:none;border-radius:999px;padding:.5rem 1rem;font-weight:600;cursor:pointer;box-shadow:var(--sombra)}
 
