@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-20",
+  "actualizado": "2026-10-27",
   "fuente": "Documento «MÓDULOS DE FORMACIÓN» — Gobernación de Casanare",
   "modulos": [
     {
@@ -52,7 +52,13 @@
       ],
       "actividad": "Seleccionar una situación susceptible de mejora e identificar conocimiento disponible, actores, capacidades, brechas y valor público esperado.",
       "formativa": "Autoevaluación conceptual + lista de chequeo de la Ficha de Oportunidad.",
-      "conexion": "La oportunidad identificada se convierte en el insumo para delimitar y formular técnicamente el problema en el Módulo 2."
+      "conexion": "La oportunidad identificada se convierte en el insumo para delimitar y formular técnicamente el problema en el Módulo 2.",
+      "documentos": [
+        {
+          "material": "guia-m1",
+          "titulo": "Guía de estudio del Módulo 1 (PDF, borrador)"
+        }
+      ]
     },
     {
       "id": "m2",
@@ -104,7 +110,13 @@
       ],
       "actividad": "Construir el árbol de problemas de una situación real, identificar evidencia y transformar el diagnóstico en un reto territorial.",
       "formativa": "Autoevaluación + revisión de coherencia entre problema, causas, efectos y objetivos.",
-      "conexion": "El diagnóstico consolidado se convierte en la base para estructurar el proyecto bajo lógica MGA en el Módulo 3."
+      "conexion": "El diagnóstico consolidado se convierte en la base para estructurar el proyecto bajo lógica MGA en el Módulo 3.",
+      "documentos": [
+        {
+          "material": "guia-m2",
+          "titulo": "Guía de estudio del Módulo 2 (PDF, borrador)"
+        }
+      ]
     },
     {
       "id": "m3",
@@ -158,7 +170,13 @@
       ],
       "actividad": "Diligenciar progresivamente un perfil básico de proyecto usando el problema trabajado en el módulo anterior.",
       "formativa": "Autoevaluación + lista de coherencia interna del perfil MGA.",
-      "conexion": "El perfil formulado será analizado en el Módulo 4 para determinar su componente CTeI, actores y capacidades requeridas."
+      "conexion": "El perfil formulado será analizado en el Módulo 4 para determinar su componente CTeI, actores y capacidades requeridas.",
+      "documentos": [
+        {
+          "material": "guia-m3",
+          "titulo": "Guía de estudio del Módulo 3 (PDF, borrador)"
+        }
+      ]
     },
     {
       "id": "m4",
@@ -217,7 +235,13 @@
       ],
       "actividad": "Retomar el perfil MGA, identificar su componente de conocimiento, clasificarlo preliminarmente y determinar los actores y capacidades necesarias.",
       "formativa": "Clasificación de casos + lista de chequeo del componente CTeI y del mapa de actores.",
-      "conexion": "La iniciativa clasificada y sus aliados se preparan en el Módulo 5 para identificar una fuente de financiación y responder a una convocatoria."
+      "conexion": "La iniciativa clasificada y sus aliados se preparan en el Módulo 5 para identificar una fuente de financiación y responder a una convocatoria.",
+      "documentos": [
+        {
+          "material": "guia-m4",
+          "titulo": "Guía de estudio del Módulo 4 (PDF, borrador)"
+        }
+      ]
     },
     {
       "id": "m5",
@@ -271,7 +295,13 @@
       ],
       "actividad": "Aplicar una lista de preparación a la iniciativa formulada y determinar si está lista para postular, requiere maduración o debe buscar otra fuente.",
       "formativa": "Autoevaluación + lista de chequeo de convocatoria.",
-      "conexion": "Una iniciativa financiada o lista para ejecución requiere seguimiento, evidencias, gestión de riesgos y sostenibilidad, aspectos desarrollados en el Módulo 6."
+      "conexion": "Una iniciativa financiada o lista para ejecución requiere seguimiento, evidencias, gestión de riesgos y sostenibilidad, aspectos desarrollados en el Módulo 6.",
+      "documentos": [
+        {
+          "material": "guia-m5",
+          "titulo": "Guía de estudio del Módulo 5 (PDF, borrador)"
+        }
+      ]
     },
     {
       "id": "m6",
@@ -326,7 +356,13 @@
       ],
       "actividad": "Construir un plan básico de seguimiento y consolidar los productos de los seis módulos en la ficha final del proyecto.",
       "formativa": "Autoevaluación final + revisión integral de la ficha de proyecto.",
-      "conexion": "Cierre del curso y consolidación de una iniciativa preliminar que puede avanzar a procesos posteriores de estructuración técnica, validación o presentación a fuentes de financiación."
+      "conexion": "Cierre del curso y consolidación de una iniciativa preliminar que puede avanzar a procesos posteriores de estructuración técnica, validación o presentación a fuentes de financiación.",
+      "documentos": [
+        {
+          "material": "guia-m6",
+          "titulo": "Guía de estudio del Módulo 6 (PDF, borrador)"
+        }
+      ]
     }
   ]
 }

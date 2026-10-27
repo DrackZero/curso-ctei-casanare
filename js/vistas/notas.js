@@ -5,6 +5,7 @@ import * as contenidos from '../datos/contenidos.js';
 import * as almacen from '../datos/almacen.js';
 import * as progreso from '../nucleo/progreso.js';
 import * as evaluacion from '../nucleo/evaluacion.js';
+import { PAGINAS } from '../config.js';
 import { esc } from '../ui/componentes.js';
 import { notificar } from '../ui/avisos.js';
 
@@ -18,6 +19,8 @@ async function pintar() {
   const pr = evaluacion.promedio(u.id, mods);
   const ap = evaluacion.aprobados(u.id, mods);
   const completo = ap === mods.length;
+  const emitida = await almacen.miConstancia();
+  const esAdmin = u.rol === 'admin';
 
   document.getElementById('contenido').innerHTML = `
   <div class="cabecera">
@@ -26,7 +29,12 @@ async function pintar() {
       <h2>Mis notas y avance</h2>
       <p>Se toma la nota más alta de cada módulo. La constancia se habilita al aprobar los ${mods.length} módulos.</p>
     </div>
-    <button class="btn" type="button" ${completo ? '' : 'disabled'} id="btn-constancia">Descargar constancia</button>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.35rem">
+      ${esAdmin
+        ? `<a class="btn btn-linea" href="${PAGINAS.constancia}?muestra=1">Ver constancia de muestra</a>`
+        : `<button class="btn" type="button" ${completo || emitida ? '' : 'disabled'} id="btn-constancia">${emitida ? 'Ver mi constancia' : 'Obtener constancia'}</button>
+           <span class="pista">${emitida ? 'Código ' + esc(emitida.codigo) : completo ? '¡Aprobó todos los módulos!' : 'Le faltan ' + (mods.length - ap) + ' de ' + mods.length + ' módulos'}</span>`}
+    </div>
   </div>
   <section class="cifras">
     <div class="cifra"><span class="v">${pr === null ? '—' : pr}</span><span class="k">Promedio general</span></div>
@@ -50,6 +58,11 @@ async function pintar() {
     </table></div>
   </section>`;
 
-  document.getElementById('btn-constancia').addEventListener('click',
-    () => notificar('La constancia en PDF se genera en la versión de producción'));
+  const boton = document.getElementById('btn-constancia');
+  if (boton) boton.addEventListener('click', async () => {
+    boton.disabled = true;
+    const r = await almacen.emitirConstancia();
+    if (!r.ok) { notificar(r.error); boton.disabled = false; return; }
+    location.href = PAGINAS.constancia;
+  });
 }

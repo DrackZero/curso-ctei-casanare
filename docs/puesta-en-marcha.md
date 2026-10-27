@@ -115,6 +115,18 @@ Menú del usuario → **Editor de contenidos**. Cuatro pestañas:
 - Los archivos se guardan en Supabase Storage (bucket `materiales`, creado por el esquema).
   El plan gratuito incluye 1 GB.
 
+## Constancia de finalización
+
+- Se habilita en **Mis notas** cuando el participante aprueba todos los módulos evaluados
+  (nota ≥ 70 en cada uno). El servidor lo verifica; la página solo muestra el botón.
+- Se emite **una sola vez** por persona, con un código aleatorio (`XXXX-XXXX-XXXX`) y un QR.
+  Volver a pedirla devuelve la misma.
+- Cualquiera puede comprobarla, sin cuenta, en `paginas/verificar.html` con el código o el QR:
+  la página muestra solo nombre, promedio y fecha. No es posible listar las constancias.
+- La coordinación ve una **constancia de muestra** desde Mis notas, sin emitir ninguna.
+- Pendiente de la entidad: quién firma, si lleva firma escaneada y si debe incluir el número
+  de documento (hoy la plataforma no lo pide en la inscripción).
+
 ## Mantenimiento
 
 - **Crear cuentas siempre desde la plataforma** (pestaña *Inscribirme*), no desde el panel

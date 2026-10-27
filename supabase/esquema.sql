@@ -411,3 +411,87 @@ create policy materiales_borrar on storage.objects for delete to authenticated
 
 -- Versión anterior de es_admin() en el esquema público: ya ninguna política la usa.
 drop function if exists public.es_admin();
+
+-- ================================================================== constancias
+-- Se emite una sola vez por participante, cuando aprueba todos los módulos evaluados.
+-- El código es aleatorio (no adivinable) y permite verificar la constancia en una página pública.
+create table if not exists public.constancias (
+  codigo     text primary key,
+  usuario_id uuid not null unique references public.perfiles(id) on delete cascade,
+  nombre     text not null,          -- nombre tal como quedó impreso
+  promedio   int  not null,
+  emitida    timestamptz not null default now()
+);
+
+alter table public.constancias enable row level security;
+
+drop policy if exists constancias_leer on public.constancias;
+create policy constancias_leer on public.constancias
+  for select to authenticated
+  using (usuario_id = auth.uid() or privado.es_admin());
+
+-- Sin políticas de escritura: solo emitir_constancia() las crea.
+revoke all on public.constancias from anon, authenticated;
+grant select on public.constancias to authenticated;
+
+create or replace function public.emitir_constancia()
+returns jsonb
+language plpgsql security definer set search_path = ''
+as $$
+declare
+  v_uid      uuid := auth.uid();
+  v_c        public.constancias;
+  v_modulos  int;
+  v_aprobados int;
+  v_promedio int;
+  v_nombre   text;
+begin
+  if v_uid is null then
+    raise exception 'Sesión requerida' using errcode = '42501';
+  end if;
+
+  select * into v_c from public.constancias where usuario_id = v_uid;
+  if found then
+    return to_jsonb(v_c) - 'usuario_id';
+  end if;
+
+  -- Módulos con evaluación configurada y mejor nota del participante en cada uno.
+  select count(distinct modulo_id) into v_modulos from public.claves;
+  select count(*), round(avg(mejor)) into v_aprobados, v_promedio
+    from (select modulo_id, max(nota) as mejor from public.intentos
+           where usuario_id = v_uid
+             and modulo_id in (select distinct modulo_id from public.claves)
+           group by modulo_id) m
+   where mejor >= 70;
+
+  if v_modulos = 0 or v_aprobados < v_modulos then
+    raise exception 'La constancia se habilita al aprobar los % módulos (lleva %)', v_modulos, v_aprobados using errcode = 'P0001';
+  end if;
+
+  select nombre into v_nombre from public.perfiles where id = v_uid;
+
+  insert into public.constancias (codigo, usuario_id, nombre, promedio)
+  values (upper(substr(md5(gen_random_uuid()::text), 1, 4) || '-' || substr(md5(gen_random_uuid()::text), 1, 4)
+                || '-' || substr(md5(gen_random_uuid()::text), 1, 4)),
+          v_uid, v_nombre, v_promedio)
+  returning * into v_c;
+
+  return to_jsonb(v_c) - 'usuario_id';
+end;
+$$;
+
+-- Verificación pública: con el código exacto devuelve solo nombre, fecha y promedio.
+-- Es la única función de la API que se puede usar sin sesión, y no permite listar constancias.
+create or replace function public.verificar_constancia(p_codigo text)
+returns jsonb
+language sql stable security definer set search_path = ''
+as $$
+  select jsonb_build_object('codigo', codigo, 'nombre', nombre, 'promedio', promedio, 'emitida', emitida)
+    from public.constancias
+   where codigo = upper(trim(p_codigo));
+$$;
+
+revoke all on function public.emitir_constancia() from public, anon;
+grant execute on function public.emitir_constancia() to authenticated;
+revoke all on function public.verificar_constancia(text) from public;
+grant execute on function public.verificar_constancia(text) to anon, authenticated;

@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-10-20",
+  "actualizado": "2026-10-27",
   "criterio": "Cada módulo tiene una ficha de presentación y una o dos fichas temáticas, con la numeración del documento MÓDULOS DE FORMACIÓN.",
   "estados": {
     "coincide": "El número impreso y el módulo asignado coinciden.",
@@ -187,6 +187,84 @@
       "criterioAsignacion": "tema",
       "estado": "coincide",
       "observacion": "",
+      "revisadoPor": "",
+      "fechaRevision": ""
+    },
+    {
+      "id": "guia-m1",
+      "tipo": "documento",
+      "archivo": "assets/docs/guia-modulo-1.pdf",
+      "titulo": "Guía de estudio del módulo 1 (borrador)",
+      "numeroImpreso": 1,
+      "moduloAsignado": "m1",
+      "criterioAsignacion": "tema",
+      "estado": "coincide",
+      "observacion": "Borrador pendiente de validación del responsable técnico del módulo.",
+      "revisadoPor": "",
+      "fechaRevision": ""
+    },
+    {
+      "id": "guia-m2",
+      "tipo": "documento",
+      "archivo": "assets/docs/guia-modulo-2.pdf",
+      "titulo": "Guía de estudio del módulo 2 (borrador)",
+      "numeroImpreso": 2,
+      "moduloAsignado": "m2",
+      "criterioAsignacion": "tema",
+      "estado": "coincide",
+      "observacion": "Borrador pendiente de validación del responsable técnico del módulo.",
+      "revisadoPor": "",
+      "fechaRevision": ""
+    },
+    {
+      "id": "guia-m3",
+      "tipo": "documento",
+      "archivo": "assets/docs/guia-modulo-3.pdf",
+      "titulo": "Guía de estudio del módulo 3 (borrador)",
+      "numeroImpreso": 3,
+      "moduloAsignado": "m3",
+      "criterioAsignacion": "tema",
+      "estado": "coincide",
+      "observacion": "Borrador pendiente de validación del responsable técnico del módulo.",
+      "revisadoPor": "",
+      "fechaRevision": ""
+    },
+    {
+      "id": "guia-m4",
+      "tipo": "documento",
+      "archivo": "assets/docs/guia-modulo-4.pdf",
+      "titulo": "Guía de estudio del módulo 4 (borrador)",
+      "numeroImpreso": 4,
+      "moduloAsignado": "m4",
+      "criterioAsignacion": "tema",
+      "estado": "coincide",
+      "observacion": "Borrador pendiente de validación del responsable técnico del módulo.",
+      "revisadoPor": "",
+      "fechaRevision": ""
+    },
+    {
+      "id": "guia-m5",
+      "tipo": "documento",
+      "archivo": "assets/docs/guia-modulo-5.pdf",
+      "titulo": "Guía de estudio del módulo 5 (borrador)",
+      "numeroImpreso": 5,
+      "moduloAsignado": "m5",
+      "criterioAsignacion": "tema",
+      "estado": "coincide",
+      "observacion": "Borrador pendiente de validación del responsable técnico del módulo.",
+      "revisadoPor": "",
+      "fechaRevision": ""
+    },
+    {
+      "id": "guia-m6",
+      "tipo": "documento",
+      "archivo": "assets/docs/guia-modulo-6.pdf",
+      "titulo": "Guía de estudio del módulo 6 (borrador)",
+      "numeroImpreso": 6,
+      "moduloAsignado": "m6",
+      "criterioAsignacion": "tema",
+      "estado": "coincide",
+      "observacion": "Borrador pendiente de validación del responsable técnico del módulo.",
       "revisadoPor": "",
       "fechaRevision": ""
     }

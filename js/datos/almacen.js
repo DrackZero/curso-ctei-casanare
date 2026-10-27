@@ -194,6 +194,23 @@ export async function borrarArchivo(url) {
   return error ? { ok: false, error: error.message } : { ok: true };
 }
 
+/* ---- constancia de finalización ---- */
+/* Emite la constancia (o devuelve la ya emitida). El servidor verifica los módulos aprobados. */
+export async function emitirConstancia() {
+  const { data, error } = await db().rpc('emitir_constancia');
+  return error ? { ok: false, error: error.message } : { ok: true, constancia: data };
+}
+export async function miConstancia() {
+  if (!cache || !cache.sesion) return null;
+  const { data } = await db().from('constancias').select('codigo,nombre,promedio,emitida').eq('usuario_id', cache.sesion).maybeSingle();
+  return data || null;
+}
+/* Verificación pública por código: funciona sin iniciar sesión. */
+export async function verificarConstancia(codigo) {
+  const { data, error } = await db().rpc('verificar_constancia', { p_codigo: codigo });
+  return error ? { ok: false, error: error.message } : { ok: true, constancia: data };
+}
+
 /* ---- resultado del último intento (para la pantalla de resultado) ---- */
 export function guardarUltimoResultado(r) {
   try { sessionStorage.setItem('ctei_ultimo_resultado', JSON.stringify(r)); } catch (e) {}

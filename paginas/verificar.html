@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- El título es el nombre sugerido del archivo al guardar como PDF -->
+  <title>Verificar constancia · Curso CTeI · Gobernación de Casanare</title>
+  <link rel="icon" href="../assets/favicon.ico">
+
+  <!-- Tipografías institucionales -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+  <!-- Hojas de estilo: base → componentes → constancia -->
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/componentes.css">
+    <link rel="stylesheet" href="../css/constancia.css">
+  <!-- Estilos de la pantalla de carga: en línea para que funcionen aunque el navegador
+       tenga en caché una hoja de estilos anterior -->
+  <style>
+    .carga{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;
+      background:#fff;transition:opacity .3s ease,visibility .3s ease;font-family:"Work Sans",system-ui,sans-serif}
+    .carga.saliendo{opacity:0;visibility:hidden}
+    .carga-circulo{width:46px;height:46px;border-radius:50%;border:4px solid #DCE5DF;border-top-color:#0B5D3B;animation:carga-giro .8s linear infinite}
+    .carga-texto{font-size:.9rem;color:#3D5147;letter-spacing:.02em}
+    @keyframes carga-giro{to{transform:rotate(360deg)}}
+    @media (prefers-reduced-motion:reduce){.carga-circulo{animation-duration:2.4s}.carga{transition:none}}
+    @media print{.carga{display:none}}
+  </style>
+</head>
+
+<body class="cuerpo-constancia">
+  <!-- Pantalla de carga: visible de inmediato; js/ui/carga.js la retira al terminar
+       y la vuelve a mostrar al navegar a otra página de la plataforma -->
+  <div id="carga" class="carga" role="status" aria-live="polite">
+    <div class="carga-circulo" aria-hidden="true"></div>
+    <div class="carga-texto">Cargando…</div>
+  </div>
+
+  <!-- Verificación pública de constancias: no exige iniciar sesión. La arma js/vistas/verificar.js -->
+  <main class="verificar" id="informe"></main>
+
+  <script src="../js/vendor/supabase.js"></script>
+  <script type="module" src="../js/vistas/verificar.js"></script>
+
+</body>
+
+</html>

@@ -109,4 +109,4 @@ Cada módulo tiene una **ficha de presentación** y una o dos **fichas temática
 - Conseguir el logotipo CTeI y el escudo en vector.
 - Enlazar las redes institucionales en `js/config.js` (`ENLACES_INSTITUCIONALES`).
 - Configurar un SMTP institucional en Supabase antes de abrir inscripciones masivas.
-- Generar la constancia en PDF.
+- Definir quién firma la constancia y validar las guías de estudio (borradores en `assets/docs/`).

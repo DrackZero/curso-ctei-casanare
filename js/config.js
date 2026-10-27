@@ -31,7 +31,9 @@ export const PAGINAS = {
   revision:   BASE + 'paginas/revision.html',
   reporte:    BASE + 'paginas/reporte.html',
   privacidad: BASE + 'paginas/privacidad.html',
-  editor:     BASE + 'paginas/editor.html'
+  editor:     BASE + 'paginas/editor.html',
+  constancia: BASE + 'paginas/constancia.html',
+  verificar:  BASE + 'paginas/verificar.html'
 };
 
 export const ENLACES_INSTITUCIONALES = {
