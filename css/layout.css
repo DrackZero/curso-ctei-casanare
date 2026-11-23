@@ -5,9 +5,10 @@
 /* ---------- encabezado institucional (estándar GOV.CO) ---------- */
 .govco{background:var(--govco);color:#fff}
 .govco-in{max-width:1180px;margin:0 auto;padding:.3rem 1.15rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.govco .marca-pais{display:flex;align-items:center;gap:.55rem;font-family:var(--display);font-weight:700;letter-spacing:.01em;font-size:1.02rem}
-.govco .marca-pais .sello{width:22px;height:22px;border-radius:3px;background:rgba(255,255,255,.9);color:var(--govco);
-  display:grid;place-items:center;font-size:.55rem;font-weight:700;letter-spacing:0;line-height:1;font-family:var(--sans)}
+/* logo oficial GOV.CO (archivo de la biblioteca de gov.co); el estándar pide enlace a www.gov.co */
+.govco .logo-govco{display:flex;align-items:center;min-height:30px;color:#fff;text-decoration:none;
+  font-family:var(--display);font-weight:700;font-size:1.02rem}
+.govco .logo-govco img{display:block;height:30px;width:auto}
 .govco .sep{width:1px;height:18px;background:rgba(255,255,255,.45)}
 .govco .acc{margin-left:auto;display:flex;align-items:center;gap:.55rem;font-size:.76rem}
 .govco .acc button{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:4px;

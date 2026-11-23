@@ -17,7 +17,9 @@ export async function pintarCabecera(contenedor, { activo = '', moduloActivo = '
   <div class="cab-fija">
     <div class="govco">
       <div class="govco-in">
-        <span class="marca-pais"><span class="sello">ESC</span><span class="tricolor" aria-hidden="true"><i></i><i></i><i></i></span>GOV.CO</span>
+        <a class="logo-govco" href="https://www.gov.co/" target="_blank" rel="noopener" aria-label="Ir al portal GOV.CO">
+          <img src="${recurso('assets/img/marca/logo-govco.png')}" alt="GOV.CO" height="30">
+        </a>
         <span class="acc">
           <button type="button" data-fuente="1" title="Aumentar tamaño de letra">A+</button>
           <button type="button" data-fuente="-1" title="Reducir tamaño de letra">A−</button>
@@ -90,6 +92,11 @@ export async function pintarCabecera(contenedor, { activo = '', moduloActivo = '
 }
 
 function conectar(raiz) {
+  // Logo oficial de MinTIC (no se redibuja). Si el archivo aún no está en el repo,
+  // queda el texto «GOV.CO» enlazado, sin imitar la marca.
+  const logo = raiz.querySelector('.logo-govco img');
+  logo.addEventListener('error', () => { logo.replaceWith('GOV.CO'); }, { once: true });
+
   const alternar = (boton, panel) => {
     boton.addEventListener('click', e => {
       e.stopPropagation();
