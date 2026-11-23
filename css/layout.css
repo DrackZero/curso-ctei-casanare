@@ -5,7 +5,7 @@
 /* ---------- encabezado institucional (estándar GOV.CO) ---------- */
 .govco{background:var(--govco);color:#fff}
 .govco-in{max-width:1180px;margin:0 auto;padding:.3rem 1.15rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-/* logo oficial GOV.CO (archivo de la biblioteca de gov.co); el estándar pide enlace a www.gov.co */
+/* logo oficial GOV.CO (archivo de la biblioteca de gov.co); enlaza al portal de la Gobernación */
 .govco .logo-govco{display:flex;align-items:center;min-height:30px;color:#fff;text-decoration:none;
   font-family:var(--display);font-weight:700;font-size:1.02rem}
 .govco .logo-govco img{display:block;height:30px;width:auto}

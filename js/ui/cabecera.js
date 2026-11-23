@@ -17,7 +17,7 @@ export async function pintarCabecera(contenedor, { activo = '', moduloActivo = '
   <div class="cab-fija">
     <div class="govco">
       <div class="govco-in">
-        <a class="logo-govco" href="https://www.gov.co/" target="_blank" rel="noopener" aria-label="Ir al portal GOV.CO">
+        <a class="logo-govco" href="https://www.casanare.gov.co/" target="_blank" rel="noopener" aria-label="Ir al portal de la Gobernación de Casanare">
           <img src="${recurso('assets/img/marca/logo-govco.png')}" alt="GOV.CO" height="30">
         </a>
         <span class="acc">
